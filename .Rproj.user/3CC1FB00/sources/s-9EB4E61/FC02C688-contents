@@ -1,0 +1,17 @@
+Package: chromDraw
+Type: Package
+Title: Drawing syntenic blocks in Evolution Highway style
+Version: 0.1.0
+Author: Marta Farre
+Maintainer: Marta Farre <m.farre-belmonte@kent.ac.uk>
+Description: So far it has one function to draw EH style comparative maps
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports:
+    ggplot2

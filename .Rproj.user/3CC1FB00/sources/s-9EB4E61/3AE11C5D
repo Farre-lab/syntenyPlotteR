@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1602504093098.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3AE11C5D",
+    "lastKnownWriteTime" : 1602527046,
+    "last_content_update" : 1602527046213,
+    "path" : "~/chromDraw/R/EH.R",
+    "project_path" : "R/EH.R",
+    "properties" : {
+        "cursorPosition" : "34,35",
+        "scrollLine" : "27"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
