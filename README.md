@@ -31,3 +31,9 @@ NOTE: ChrX is hardcoded, if you don't have an X please ignore the last error mes
 library(chromDraw)
 
 draw.eh(testData.csv,testOut.pdf,1:5)
+
+## To come soon:
+
+1. Alluvial style synteny plots
+2. inferCARs style synteny plots
+3. Preprint in Biorxiv
