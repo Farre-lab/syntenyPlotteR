@@ -1,7 +1,7 @@
 # chromDraw
 R package to draw Evolution Highway style synteny plots
 
-It created a PDF file with one page per reference chromosome.
+It creates a PDF file with one page per reference chromosome.
 
 ## To install:
 devtools::install_github("marta-fb/chromDraw")
@@ -34,6 +34,7 @@ draw.eh(testData.csv,testOut.pdf,1:5)
 
 ## To come soon:
 
-1. Alluvial style synteny plots
-2. inferCARs style synteny plots
-3. Preprint in Biorxiv
+1. Update vignette
+2. Alluvial style synteny plots
+3. inferCARs style synteny plots
+4. Preprint in Biorxiv
