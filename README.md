@@ -38,3 +38,7 @@ NOTE: ChrX is hardcoded, if you don't have an X please ignore the last error mes
 2. Alluvial style synteny plots
 3. inferCARs style synteny plots
 4. Preprint in Biorxiv
+
+### Citation:
+While I'm preparing the publication, please cite:  
+Farré M, Kim J, et al. Evolution of gene regulation in ruminants differs between evolutionary breakpoint regions and homologous synteny blocks. Genome Research 2019 Apr;29(4):576-589
