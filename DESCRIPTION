@@ -1,4 +1,4 @@
-Package: chromDraw
+Package: syntenyPlotteR
 Type: Package
 Title: Drawing syntenic blocks in Evolution Highway style
 Version: 0.2.0
