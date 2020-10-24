@@ -1,10 +1,10 @@
 Package: chromDraw
 Type: Package
 Title: Drawing syntenic blocks in Evolution Highway style
-Version: 0.1.0
+Version: 0.2.0
 Author: Marta Farre
 Maintainer: Marta Farre <m.farre-belmonte@kent.ac.uk>
-Description: So far it has one function to draw EH style comparative maps
+Description: So far it has two functiosn to draw EH style comparative maps and parwise synteny plots
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
