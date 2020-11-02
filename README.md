@@ -1,17 +1,18 @@
-# chromDraw
+# syntenyPlotteR
 R package to draw Evolution Highway style synteny plots
 
 It creates a PDF file with one page per reference chromosome.
 
 ## To install:
-`devtools::install_github("marta-fb/chromDraw")`
+`devtools::install_github("marta-fb/syntenyPlotteR")`
 
 ## To use:
 
 `draw.eh(input,outputName,chromosomeRange)`
 
-input file - synteny blocks following this format (please include this line as a header as well):  
-  ref,chr,start,end,tarChr,tarSt,tarEnd,orient,tar
+input file - synteny blocks following this format, separated by tabs. 
+  Please include this line as a header as it is:  
+  ref chr start end tarChr  tarSt tarEnd  orient  tar
   
   ref - name of reference species  
   chr - chromosome of reference species   
@@ -28,9 +29,9 @@ chromosomeRange - range of chromosome numbers in reference species for autosomes
 NOTE: ChrX is hardcoded, if you don't have an X please ignore the last error message.
 
 ### Example:  
-`library(chromDraw)`
+`library(syntenyPlotteR)`
 
-`draw.eh(testData.csv,testOut.pdf,1:5)`
+`draw.eh(testData.txt,testOut,1:5)`
 
 ## To come soon:
 
