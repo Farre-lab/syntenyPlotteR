@@ -10,7 +10,7 @@ It creates a PDF file with one page per reference chromosome.
 
 `draw.eh(input,outputName,chromosomeRange)`
 
-input file - synteny blocks following this format, separated by tabs. 
+input file - synteny blocks following this format, separated by tabs.  
   Please include this line as a header as it is:  
   ref chr start end tarChr  tarSt tarEnd  orient  tar
   
