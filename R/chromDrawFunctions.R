@@ -12,8 +12,8 @@
 #' @return A pdf file with the comparative drawings
 #' @export
 draw.eh<-function(infile,outfile,chrRange) {
-  data<-read.table(infile, header=TRUE)
-  colnames(data)
+  data<-read.table(infile, header=FALSE)
+  colnames(data) = c("ref","chr","start","end","tarChr","tarSt","tarEnd","orient","tar")
   data$orient = factor(data$orient, levels=c("1","-1"))
   data$text_size2=80*((data$end-data$start)/100000)
 
