@@ -8,7 +8,7 @@ It creates a PDF file with one page per reference chromosome.
 
 ## To use:
 
-`draw.eh(input,outputName,chromosomeRange)`
+`draw.eh("input file","output file name",chromosomeRange)`
 
 input file - synteny blocks following this format, separated by tabs.  
   Please DO NOT include a header line
@@ -30,7 +30,7 @@ NOTE: ChrX is hardcoded, if you don't have an X please ignore the last error mes
 ### Example:  
 `library(syntenyPlotteR)`
 
-`draw.eh(testData.txt,testOut,1:5)`
+`draw.eh("testData.txt","testOut",1:5)`
 
 ## To come soon:
 
