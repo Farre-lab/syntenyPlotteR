@@ -11,11 +11,10 @@ It creates a PDF file with one page per reference chromosome.
 `draw.eh(input,outputName,chromosomeRange)`
 
 input file - synteny blocks following this format, separated by tabs.  
-  Please include this line as a header as it is:  
-  ref chr start end tarChr  tarSt tarEnd  orient  tar
+  Please DO NOT include a header line
   
   ref - name of reference species  
-  chr - chromosome of reference species   
+  chr - chromosome of reference species -- it ONLY accepts numbers  
   start - start of block in reference species  
   end - end of block in reference species  
   tarChr - chromosome of target species  
