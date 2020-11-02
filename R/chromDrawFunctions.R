@@ -8,7 +8,7 @@
 #' @title Evolution Highway style plot
 #' @param infile Path to the syntenic blocks file
 #' @param output file name
-#' @param chrRange range of chromosome numbers in the reference "1:29,X"
+#' @param chrRange range of chromosome numbers in the reference "1:29"
 #' @return A pdf file with the comparative drawings
 #' @export
 draw.eh<-function(infile,outfile,chrRange) {
@@ -18,7 +18,7 @@ draw.eh<-function(infile,outfile,chrRange) {
   data$text_size2=80*((data$end-data$start)/100000)
 
   pdf(paste0(outfile,".pdf"),width=5.5, height =10, pointsize = 10)
-  for (ID in c(chrRange,"X")) {
+  for (ID in c(chrRange)) {
     #ID=chrRange
     print(ID)
     subsetChr1<-subset(data,chr==ID, select=c(ref,chr,start,end,tarChr,tarSt,tarEnd,orient,tar,text_size2))

@@ -23,9 +23,8 @@ input file - synteny blocks following this format, separated by tabs.
   tar - name of target species  
 
 outputName - name of output file   
-chromosomeRange - range of chromosome numbers in reference species for autosomes
+chromosomeRange - range of chromosome numbers in reference species.
 
-NOTE: ChrX is hardcoded, if you don't have an X please ignore the last error message.
 
 ### Example:  
 `library(syntenyPlotteR)`
