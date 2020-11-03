@@ -36,11 +36,13 @@ chromosomeRange - range of chromosome numbers in reference species.
 
 `draw.eh("testData.txt","testOut",1:5)`
 
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleEH.pdf?raw=true)  
+
 ## inferCARs style
 
 ### Usage
 
-`library(syntenyPlotteR)`
+`library(syntenyPlotteR)`  
 `draw.ideogram(<synteny_file>, <target_chr_size>, <reference_chr_size>)`
 
   target_chr_size Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
