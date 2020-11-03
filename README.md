@@ -33,7 +33,7 @@ chromosomeRange - range of chromosome numbers in reference species.
 ### Example:  
 `library(syntenyPlotteR)`
 
-`draw.eh("testData.txt","testOut",1:5)`
+`draw.eh("syntenicBlocks_oneChromosome_severalSps.txt","testOut",1:1)`
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleEH.png?raw=true)  
 
