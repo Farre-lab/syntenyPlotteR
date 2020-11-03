@@ -1,17 +1,15 @@
 # syntenyPlotteR
-R package to draw Evolution Highway style synteny plots
-
-It creates a PDF file with one page per reference chromosome.
+R package to draw synteny plots in three different styles
 
 ## To install:
 `devtools::install_github("marta-fb/syntenyPlotteR")`
 
-## To use:
 
-`draw.eh("input file","output file name",chromosomeRange)`
+## Input file
 
-input file - synteny blocks following this format, separated by tabs.  
-  Please DO NOT include a header line
+Please provide a file with the synteny blocks information, following this format, separated by tabs.  
+
+  DO NOT include a header line
   
   ref - name of reference species  
   chr - chromosome of reference species -- it ONLY accepts numbers  
@@ -22,6 +20,13 @@ input file - synteny blocks following this format, separated by tabs.
   orient - orientation of the block (1 or -1)  
   tar - name of target species  
 
+## Evolution Highway style
+
+### Usage
+
+`draw.eh("input file","output file name",chromosomeRange)`
+
+
 outputName - name of output file   
 chromosomeRange - range of chromosome numbers in reference species.
 
@@ -30,6 +35,20 @@ chromosomeRange - range of chromosome numbers in reference species.
 `library(syntenyPlotteR)`
 
 `draw.eh("testData.txt","testOut",1:5)`
+
+## inferCARs style
+
+### Usage
+
+`library(syntenyPlotteR)`
+`draw.ideogram(<synteny_file>, <target_chr_size>, <reference_chr_size>)`
+
+  target_chr_size Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
+  reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length  
+
+### Example output:
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/images/exampleInferCARs.png?raw=true)
 
 ## To come soon:
 
