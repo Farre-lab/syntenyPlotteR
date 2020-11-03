@@ -36,7 +36,7 @@ chromosomeRange - range of chromosome numbers in reference species.
 
 `draw.eh("testData.txt","testOut",1:5)`
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleEH.pdf?raw=true)  
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleEH.png?raw=true)  
 
 ## inferCARs style
 
