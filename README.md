@@ -11,7 +11,6 @@ Please provide a file with the synteny blocks information, following this format
 
   DO NOT include a header line
   
-  ref - name of reference species  
   chr - chromosome of reference species -- it ONLY accepts numbers  
   start - start of block in reference species  
   end - end of block in reference species  

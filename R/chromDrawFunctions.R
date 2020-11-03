@@ -1,7 +1,7 @@
 #' Draw Evolution Highway Plots
 #'
 #' This function draws Evolution Highway style plots. It requieres as input the syntenic blocks following this
-#' format: referenceSpecies,chr,start,end,targetChr,targetStart,targetEnd,orient,targetSpecies separated by tabs
+#' format: chr,start,end,targetChr,targetStart,targetEnd,orient,targetSpecies separated by tabs
 #' It also requieres the output file name and the range of chromosomes of the reference species.
 #' Example: draw.eh(input.csv,goat,"1:29")
 #'
@@ -13,7 +13,7 @@
 #' @export
 draw.eh<-function(infile,outfile,chrRange) {
   data<-read.table(infile, header=FALSE)
-  colnames(data) = c("ref","chr","start","end","tarChr","tarSt","tarEnd","orient","tar")
+  colnames(data) = c("chr","start","end","tarChr","tarSt","tarEnd","orient","tar")
   data$orient = factor(data$orient, levels=c("1","-1"))
   data$text_size2=80*((data$end-data$start)/100000)
 
@@ -21,7 +21,7 @@ draw.eh<-function(infile,outfile,chrRange) {
   for (ID in c(chrRange)) {
     #ID=chrRange
     print(ID)
-    subsetChr1<-subset(data,chr==ID, select=c(ref,chr,start,end,tarChr,tarSt,tarEnd,orient,tar,text_size2))
+    subsetChr1<-subset(data,chr==ID, select=c(chr,start,end,tarChr,tarSt,tarEnd,orient,tar,text_size2))
     min=min(subsetChr1$start)
     max=max(subsetChr1$end)
     print(ggplot2::ggplot() +
@@ -71,7 +71,7 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   data<- read.delim(infile, header=FALSE)
   ref_sizes <-read.delim(refSizes, header=FALSE)
   tar_sizes <-read.delim(tarSizes, header=FALSE)
-  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir")
+  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir","tarSps")
   colnames(ref_sizes) = c("refchr", "size")
   colnames(tar_sizes) = c("tarchr", "size")
 
@@ -183,7 +183,7 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
 #' Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
 #' Chromosomes will be in the same order as in the target sizes file.
 #'
-#' Example: draw_ideogram(synteny_file, target_chr_size, reference_chr_size)
+#' Example: draw.ideogram(synteny_file, target_chr_size, reference_chr_size)
 #' @title Draw ideograms in inferCARs style
 #' @param file_data Path to the syntenic blocks file
 #' @param file_tarsize Path to the target chromosomes length file
@@ -202,7 +202,7 @@ draw.ideogram <- function(file_data, file_tarsize, file_refsize) {
 
   colnames(tar_sizes) = c("tarchr", "size")
   colnames(ref_sizes) = c("refchr", "size")
-  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "orien")
+  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "orien","tarSps")
 
   data$tarchr = factor(data$tarchr, levels = tar_sizes$tarchr)
   data$refchr = factor(data$refchr, levels = ref_sizes$refchr)
