@@ -48,7 +48,7 @@ chromosomeRange - range of chromosome numbers in reference species.
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/images/exampleInferCARs.png?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleInferCARs.png?raw=true)
 
 ## To come soon:
 
