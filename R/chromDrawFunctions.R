@@ -173,7 +173,7 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
                    legend.position="none")
 
   #dev.off()
-  ggsave(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
+  ggplot2::ggsave(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
 }
 
 
