@@ -228,7 +228,7 @@ draw.ideogram <- function(file_data, file_tarsize, file_refsize) {
     }
   }
 
-  pdf(paste0(file_data,".pdf"), width = 8.5, height = 11, pointsize = 10)
+  pdf(paste0(file_data,".pdf"), width = 8.5, height = 10, pointsize = 5)
 
   print(ggplot2::ggplot(size = 0.2, font = 10, data = data) +
           ggplot2::geom_rect(data=tar_sizes, mapping=ggplot2::aes(xmin=1, xmax=size, ymin=-0.1, ymax=1.1),
