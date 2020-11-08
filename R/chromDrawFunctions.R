@@ -136,9 +136,9 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   ref_sizes$refchr<-as.factor(ref_sizes$refchr)
   synteny$fill<-as.factor(synteny$fill)
 
-  #pdf(paste0("test1",".pdf"),width=20, height =5, pointsize = 10)
+  pdf(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
   #This prints plot
-  ggplot2::ggplot(size = 0.2, font = 10, data = data) +
+  print(ggplot2::ggplot(size = 0.2, font = 10, data = data) +
     ggplot2::geom_rect(data=ref_sizes, mapping=ggplot2::aes(xmin=xstart, xmax=xend, ymin=2, ymax=2.10, fill=refchr),
                        color="black", alpha = 0.85, size = 0.2 ) +
     ggplot2::geom_text(data=ref_sizes,ggplot2::aes(x=(xstart+xend)/2,y=2.15,label=refchr),size=2,angle=45) +
@@ -171,9 +171,10 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
                    axis.ticks.x=ggplot2::element_blank(),
                    axis.ticks.y=ggplot2::element_blank(),
                    legend.position="none")
+  )
 
-  #dev.off()
-  ggplot2::ggsave(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
+  dev.off()
+  #ggplot2::ggsave(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
 }
 
 
