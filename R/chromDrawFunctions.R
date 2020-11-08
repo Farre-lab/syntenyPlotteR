@@ -69,7 +69,7 @@ draw.eh<-function(infile,outfile,chrRange) {
 #' @export
 draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   dataTMP<- read.delim(infile, header=FALSE)
-  data<-dataTMP[,c(4,5,6,1,2,3,7)]
+  data<-dataTMP[,c(4,5,6,1,2,3,7,8)]
   ref_sizes <-read.delim(refSizes, header=FALSE) #to be consistent with naming in EH
   tar_sizes <-read.delim(tarSizes, header=FALSE)
   colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir", "notUsed")
