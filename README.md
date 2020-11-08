@@ -16,7 +16,8 @@ Please provide a file with the synteny blocks information, following this format
 * end - end of block in reference species  
 * tarChr - chromosome of target species  
 * tarSt - start of block in target species  
-* orient - orientation of the block (1 or -1)  
+* orient - orientation of the block (1 or -1) 
+* tarSpecies - name of the target species   
 
 ## Evolution Highway style
 

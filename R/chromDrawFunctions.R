@@ -72,7 +72,7 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   data<-dataTMP[,c(4,5,6,1,2,3,7)]
   ref_sizes <-read.delim(refSizes, header=FALSE) #to be consistent with naming in EH
   tar_sizes <-read.delim(tarSizes, header=FALSE)
-  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir")
+  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir", "notUsed")
   colnames(ref_sizes) = c("refchr", "size")
   colnames(tar_sizes) = c("tarchr", "size")
 
@@ -206,7 +206,7 @@ draw.ideogram <- function(file_data, file_tarsize, file_refsize) {
 
   colnames(tar_sizes) = c("tarchr", "size")
   colnames(ref_sizes) = c("refchr", "size")
-  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "orien","tarSps")
+  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "orien","notUsed")
 
   data$tarchr = factor(data$tarchr, levels = tar_sizes$tarchr)
   data$refchr = factor(data$refchr, levels = ref_sizes$refchr)
