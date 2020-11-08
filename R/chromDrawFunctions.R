@@ -61,17 +61,18 @@ draw.eh<-function(infile,outfile,chrRange) {
 #' @title Pairwise synteny plot
 #' @param infile Path to the syntenic blocks file
 #' @param output file name
-#' @param tarSizes file with chromosome sizes for the target species
-#' @param refSizes file with the chromosome sizes for the reference species
+#' @param refSizes file with chromosome sizes for the reference species
+#' @param tarSizes file with the chromosome sizes for the target species
 #' @param refName name of the reference species
 #' @param tarName name of the target species
 #' @return A pdf file with the comparative drawings
 #' @export
 draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
-  data<- read.delim(infile, header=FALSE)
-  ref_sizes <-read.delim(refSizes, header=FALSE)
+  dataTMP<- read.delim(infile, header=FALSE)
+  data<-dataTMP[,c(4,5,6,1,2,3,7)]
+  ref_sizes <-read.delim(refSizes, header=FALSE) #to be consistent with naming in EH
   tar_sizes <-read.delim(tarSizes, header=FALSE)
-  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir","tarSps")
+  colnames(data) = c("tarchr", "tarstart", "tarend", "refchr", "refstart", "refend", "dir")
   colnames(ref_sizes) = c("refchr", "size")
   colnames(tar_sizes) = c("tarchr", "size")
 
@@ -107,11 +108,12 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   synteny = data.frame()
   for (i in c(1:nrow(data))){
     tar_chr = data[i,"tarchr"]
-    ref_chr = as.factor(data[i,"refchr"])
+    ref_chr = data[i,"refchr"]
     dir = data[i, "dir"]
+
     tar_add = tar_sizes[as.character(tar_sizes$tarchr)==as.character(tar_chr),]$xstart
     ref_add = ref_sizes[as.character(ref_sizes$refchr)==as.character(ref_chr),]$xstart
-    tar_y = 0.10
+    tar_y = 0.1
     ref_y = 2
     tar_xstart = data[i,"tarstart"] + tar_add
     tar_xend = data[i,"tarend"] + tar_add
@@ -132,9 +134,9 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
   #making sure chr columns are factors
   tar_sizes$tarchr<-as.factor(tar_sizes$tarchr)
   ref_sizes$refchr<-as.factor(ref_sizes$refchr)
+  synteny$fill<-as.factor(synteny$fill)
 
-
-  pdf(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
+  #pdf(paste0("test1",".pdf"),width=20, height =5, pointsize = 10)
   #This prints plot
   ggplot2::ggplot(size = 0.2, font = 10, data = data) +
     ggplot2::geom_rect(data=ref_sizes, mapping=ggplot2::aes(xmin=xstart, xmax=xend, ymin=2, ymax=2.10, fill=refchr),
@@ -170,8 +172,10 @@ draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
                    axis.ticks.y=ggplot2::element_blank(),
                    legend.position="none")
 
-  dev.off()
+  #dev.off()
+  ggsave(paste0(output,".pdf"),width=20, height =5, pointsize = 10)
 }
+
 
 #' Draw synteny ideograms in inferCARS style
 #'
