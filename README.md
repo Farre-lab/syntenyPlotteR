@@ -68,6 +68,11 @@ Target is the species which chromosomes will be painted. Reference will be used 
 * refName: name of the reference genome
 * tarName: name of the target genome
 
+### Example output:
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleLinearPair.pdf?raw=true)
+
+
 ## To come soon:
 
 1. Update vignette
