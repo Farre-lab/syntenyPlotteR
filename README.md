@@ -70,7 +70,7 @@ Target is the species which chromosomes will be painted. Reference will be used 
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleLinearPair.jpeg)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleLinearPair.jpg?raw=true)
 
 
 ## To come soon:
