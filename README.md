@@ -44,16 +44,16 @@ chromosomeRange - range of chromosome numbers in reference species.
 
 This function draws pairwise synteny plots, by coloring a target species chromosomes accordingly to the homologous chromosomes of the reference.  
 
-Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.  Chromosomes will be in the same order as in the target sizes file.  
+Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals. Chromosomes will be in the same order as in the target sizes file.  
 
 ### Usage
 
 `library(syntenyPlotteR)`  
 `draw.ideogram("syntenicBlocks.txt", "reference_chr_size", "target_chr_size")`
 
-* reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length 
+* reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length  
 * target_chr_size Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
- 
+
 
 ### Example output:
 
