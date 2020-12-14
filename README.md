@@ -1,6 +1,8 @@
 # syntenyPlotteR
 R package to draw synteny plots in three different styles
 
+This package has been developed by Joana Damas (joanadamas@gmail.com) and Marta Farré (m.farre-belmonte@kent.ac.uk)
+
 ## To install:
 `devtools::install_github("marta-fb/syntenyPlotteR")`
 
@@ -81,5 +83,5 @@ Target is the species which chromosomes will be painted. Reference will be used 
 2. Preprint in Biorxiv
 
 ### Citation:
-While I'm preparing the publication, please cite:  
+While we're preparing the publication, please cite:  
 Farré M, Kim J, et al. Evolution of gene regulation in ruminants differs between evolutionary breakpoint regions and homologous synteny blocks. Genome Research 2019 Apr;29(4):576-589
