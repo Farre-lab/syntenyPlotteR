@@ -15,7 +15,8 @@ Please provide a file with the synteny blocks information, following this format
 * start - start of block in reference species  
 * end - end of block in reference species  
 * tarChr - chromosome of target species  
-* tarSt - start of block in target species  
+* tarSt - start of block in target species 
+* tarEnd - end of block in target species 
 * orient - orientation of the block (1 or -1) 
 * tarSpecies - name of the target species   
 
