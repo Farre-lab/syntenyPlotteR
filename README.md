@@ -29,8 +29,8 @@ Please provide a file with the synteny blocks information, following this format
 `draw.eh("input file","output file name",chromosomeRange)`
 
 
-outputName - name of output file   
-chromosomeRange - range of chromosome numbers in reference species.
+* outputName - name of output file   
+* chromosomeRange - range of chromosome numbers in reference species.
 
 
 ### Example:  
@@ -42,9 +42,6 @@ chromosomeRange - range of chromosome numbers in reference species.
 
 ## inferCARs style
 
-This function draws pairwise synteny plots, by coloring a target species chromosomes accordingly to the homologous chromosomes of the reference.  
-
-Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals. Chromosomes will be in the same order as in the target sizes file.  
 
 ### Usage
 
