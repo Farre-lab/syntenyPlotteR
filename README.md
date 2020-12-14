@@ -49,10 +49,11 @@ Target is the species which chromosomes will be painted. Reference will be used 
 ### Usage
 
 `library(syntenyPlotteR)`  
-`draw.ideogram("syntenicBlocks.txt", "target_chr_size", "reference_chr_size")`
+`draw.ideogram("syntenicBlocks.txt", "reference_chr_size", "target_chr_size")`
 
+* reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length 
 * target_chr_size Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
-* reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length  
+ 
 
 ### Example output:
 
