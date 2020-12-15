@@ -1,11 +1,11 @@
 Package: syntenyPlotteR
 Type: Package
-Title: Drawing syntenic blocks in Evolution Highway style
+Title: An R package for genome synteny visualization
 Version: 0.2.0
-Author: Marta Farre
+Authors@R: c(person("Farre", "Marta", email= "m.farre-belmonte@kent.ac.uk", role = "aut"), person("Damas", "Joana", email = "joanadamas@gmail.com", role = c("aut", "cre")), person("Larkin", "Denis", email = "dlarkin@rvc.ac.uk", role = "aut"))
 Maintainer: Marta Farre <m.farre-belmonte@kent.ac.uk>
-Description: So far it has two functiosn to draw EH style comparative maps and parwise synteny plots
-License: What license is it under?
+Description: Package with 3 functions to draw syntenic relationships between genome assemblies.
+License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
@@ -15,3 +15,6 @@ Suggests:
 VignetteBuilder: knitr
 Imports:
     ggplot2
+NeedsCompilation: no
+BugReports: https://github.com/marta-fb/syntenyPlotteR/issues
+URL: https://github.com/marta-fb/syntenyPlotteR
