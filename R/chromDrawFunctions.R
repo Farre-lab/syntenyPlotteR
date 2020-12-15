@@ -11,7 +11,8 @@
 #' @param chrRange range of chromosome numbers in the reference "1:29"
 #' @return A pdf file with the comparative drawings
 #' @export
-draw.eh<-function(infile,outfile,chrRange) {
+draw.eh<-function(infile,output,chrRange) {
+  outfile<-chr<-start<-end<-tarChr<-tarSt<-tarEnd<-orient<-tar<-text_size2<-NULL
   data<-read.table(infile, header=FALSE)
   colnames(data) = c("chr","start","end","tarChr","tarSt","tarEnd","orient","tar")
   data$orient = factor(data$orient, levels=c("1","-1"))
@@ -68,6 +69,7 @@ draw.eh<-function(infile,outfile,chrRange) {
 #' @return A pdf file with the comparative drawings
 #' @export
 draw.pairwise <- function(infile,output,refSizes,tarSizes,refName,tarName) {
+  xstart<-xend<-refchr<-tarchr<-x<-y<-group<-fill<-NULL
   dataTMP<- read.delim(infile, header=FALSE)
   data<-dataTMP[,c(4,5,6,1,2,3,7,8)]
   ref_sizes <-read.delim(refSizes, header=FALSE) #to be consistent with naming in EH
@@ -201,6 +203,7 @@ draw.ideogram <- function(file_data, file_tarsize, file_refsize) {
   # Refchr refstart ref end tarchr tarstart tarend - ref is ideogram target is used for painting and diagonals
 
   # Read input files
+  size<-tarstart<-tarend<-refchr<-ystart<-yend<-NULL
   tar_sizes = read.delim(file_tarsize, header = FALSE)
   ref_sizes = read.delim(file_refsize, header = FALSE)
   data = read.delim(file_data, header = FALSE)

@@ -4,14 +4,14 @@
 \alias{draw.eh}
 \title{Evolution Highway style plot}
 \usage{
-draw.eh(infile, outfile, chrRange)
+draw.eh(infile, output, chrRange)
 }
 \arguments{
 \item{infile}{Path to the syntenic blocks file}
 
-\item{chrRange}{range of chromosome numbers in the reference "1:29,X"}
-
 \item{output}{file name}
+
+\item{chrRange}{range of chromosome numbers in the reference "1:29"}
 }
 \value{
 A pdf file with the comparative drawings
@@ -21,7 +21,7 @@ Draw Evolution Highway Plots
 }
 \details{
 This function draws Evolution Highway style plots. It requieres as input the syntenic blocks following this
-format: referenceSpecies,chr,start,end,targetChr,targetStart,targetEnd,orient,targetSpecies separated by tabs
+format: chr,start,end,targetChr,targetStart,targetEnd,orient,targetSpecies separated by tabs
 It also requieres the output file name and the range of chromosomes of the reference species.
 Example: draw.eh(input.csv,goat,"1:29")
 }

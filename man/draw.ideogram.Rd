@@ -28,5 +28,5 @@ Output will be a pdf file with the ideogram.
 Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
 Chromosomes will be in the same order as in the target sizes file.
 
-Example: draw_ideogram(synteny_file, target_chr_size, reference_chr_size)
+Example: draw.ideogram(synteny_file, target_chr_size, reference_chr_size)
 }

@@ -11,9 +11,9 @@ draw.pairwise(infile, output, refSizes, tarSizes, refName, tarName)
 
 \item{output}{file name}
 
-\item{refSizes}{file with the chromosome sizes for the reference species}
+\item{refSizes}{file with chromosome sizes for the reference species}
 
-\item{tarSizes}{file with chromosome sizes for the target species}
+\item{tarSizes}{file with the chromosome sizes for the target species}
 
 \item{refName}{name of the reference species}
 

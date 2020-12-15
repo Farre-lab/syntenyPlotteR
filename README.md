@@ -38,7 +38,7 @@ Please provide a file with the synteny blocks information, following this format
 
 `draw.eh("syntenicBlocks_oneChromosome_severalSps.txt","testOut",1:1)`
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleEH.png?raw=true)  
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleEH.png?raw=true)  
 
 ## inferCARs style
 
@@ -54,7 +54,7 @@ Please provide a file with the synteny blocks information, following this format
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleInferCARs.png?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleInferCARs.png?raw=true)
 
 
 ## Linear pairwise style
@@ -72,7 +72,7 @@ Please provide a file with the synteny blocks information, following this format
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/images/exampleLinearPair.jpg?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleLinearPair.jpg?raw=true)
 
 
 ## To come soon:

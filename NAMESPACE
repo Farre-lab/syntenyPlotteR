@@ -1,1 +1,3 @@
 exportPattern("^[[:alpha:]]+")
+importFrom("grDevices", "dev.off", "pdf")
+importFrom("utils", "read.delim", "read.table")
