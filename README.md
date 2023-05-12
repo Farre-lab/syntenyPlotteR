@@ -61,18 +61,18 @@ Please provide a file with the synteny blocks information, following this format
 
 ### Usage
 
-`library(syntenyPlotteR)`  
-`draw.pairwise("syntenicBlocks.txt", "outputFileName", "reference_chr_size", "target_chr_size", "refName", "tarName")`
+`library(syntenyPlotteR)`
+`draw.pairwise("outfile.name","fileformat","lengthfile.txt"," syntenicBlocks1.txt ",” syntenicBlocks2.txt”)`
 
-* outputFilename: Name of the output file
-* target_chr_size: Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
-* reference_chr_size: Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length  
-* refName: name of the reference genome
-* tarName: name of the target genome
+*	outfile.name: Name of the output file
+*	fileformat: Type of image to save the file as e.g. png, pdf, jpeg
+*	lengthfile.txt: tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file). Format: ID Length Species
+*	syntenicBlocks1.txt & syntenicBlocks2.txt: can input here any number of tab separated files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format: reference chromosome, reference start position, reference end position, target chromosome, target start position, target end position, orientation, reference species identifier, target species identifier
+
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleLinearPair.jpg?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_pairwise_image.png?raw=true)
 
 
 ## To come soon:
