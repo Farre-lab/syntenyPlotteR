@@ -62,6 +62,7 @@ Please provide a file with the synteny blocks information, following this format
 ### Usage
 
 `library(syntenyPlotteR)`
+
 `draw.pairwise("outfile.name","fileformat","lengthfile.txt"," syntenicBlocks1.txt ",” syntenicBlocks2.txt”)`
 
 *	outfile.name: Name of the output file
