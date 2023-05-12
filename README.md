@@ -93,6 +93,7 @@ Please provide a file for each pairwise alignment from the newest species (first
 * Reference species ID
 * Target species ID
 
+Please ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
 ### Example output:
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_pairwise_image.png?raw=true)
