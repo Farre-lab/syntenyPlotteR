@@ -56,7 +56,6 @@ Please provide a file with the synteny blocks information, following this format
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleInferCARs.png?raw=true)
 
-
 ## Linear pairwise style
 
 ### Usage
@@ -67,9 +66,32 @@ Please provide a file with the synteny blocks information, following this format
 
 *	outfile.name: Name of the output file
 *	fileformat: Type of image to save the file as e.g. png, pdf, jpeg
-*	lengthfile.txt: tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file). Format: ID Length Species
-*	syntenicBlocks1.txt & syntenicBlocks2.txt: can input here any number of tab separated files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format: reference chromosome, reference start position, reference end position, target chromosome, target start position, target end position, orientation, reference species identifier, target species identifier
+*	lengthfile.txt: tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
+*	syntenicBlocks1.txt & syntenicBlocks2.txt: can input here any number of tab separated files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file)
 
+## Input files for linear pairwise style
+
+Please provide a file containing all aligned species, following this format, separated by tabs
+
+  DO NOT include a header line
+  
+* Chromosome ID 
+* Chromosome length
+* Species ID
+
+Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
+
+  DO NOT include a header line
+
+* Reference chromosome ID 
+* Reference start position
+* Reference end position
+* Target chromosome
+* Target start position
+* Target end position
+* Orientation
+* Reference species ID
+* Target species ID
 
 ### Example output:
 
