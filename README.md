@@ -1,83 +1,15 @@
 # syntenyPlotteR
 R package to draw synteny plots in three different styles
 
-This package has been developed by Joana Damas (joanadamas@gmail.com) and Marta Farré (m.farre-belmonte@kent.ac.uk)
+This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Quigley (slq4@kent.ac.uk), and Marta Farré (m.farre-belmonte@kent.ac.uk)
 
 ## To install:
 `devtools::install_github("marta-fb/syntenyPlotteR")`
 
 
-## Input file
-
-Please provide a file with the synteny blocks information, following this format, separated by tabs.  
-
-  DO NOT include a header line
-  
-* chr - chromosome of reference species -- it ONLY accepts numbers  
-* start - start of block in reference species  
-* end - end of block in reference species  
-* tarChr - chromosome of target species  
-* tarSt - start of block in target species 
-* tarEnd - end of block in target species 
-* orient - orientation of the block (1 or -1) 
-* tarSpecies - name of the target species   
-
 ## Evolution Highway style
 
-### Usage
-
-`draw.eh("input file","output file name",chromosomeRange)`
-
-
-* outputName - name of output file   
-* chromosomeRange - range of chromosome numbers in reference species.
-
-
-### Example:  
-`library(syntenyPlotteR)`
-
-`draw.eh("syntenicBlocks_oneChromosome_severalSps.txt","testOut",1:1)`
-
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleEH.png?raw=true)  
-
-## inferCARs style
-
-
-### Usage
-
-`library(syntenyPlotteR)`  
-`draw.ideogram("syntenicBlocks.txt", "reference_chr_size", "target_chr_size")`
-
-* reference_chr_size Lenghts of reference chromosomes, scaffolds or contigs. Format: ID Length  
-* target_chr_size Lenghts of target chromosomes, scaffolds or contigs. Format: ID Length  
-
-
-### Example output:
-
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/exampleInferCARs.png?raw=true)
-
-## Linear pairwise style
-
-### Usage
-
-`library(syntenyPlotteR)`
-
-`draw.pairwise("outfile.name","fileformat","lengthfile.txt"," syntenicBlocks1.txt ",” syntenicBlocks2.txt”)`
-
-*	outfile.name: Name of the output file
-*	fileformat: Type of image to save the file as e.g. png, pdf, jpeg
-*	lengthfile.txt: tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
-*	syntenicBlocks1.txt & syntenicBlocks2.txt: can input here any number of tab separated files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file)
-
-## Input files for linear pairwise style
-
-Please provide a file containing all aligned species, following this format, separated by tabs
-
-  DO NOT include a header line
-  
-* Chromosome ID 
-* Chromosome length
-* Species ID
+## Input files for Evolution Highway
 
 Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
 
@@ -93,10 +25,147 @@ Please provide a file for each pairwise alignment from the newest species (first
 * Reference species ID
 * Target species ID
 
-Please ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
+
+### Usage
+`library(syntenyPlotteR)`
+
+`draw.eh("output",chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X")`
+
+
+* output - string assigned to name of output file name
+* chrRange - the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22 
+* ... - list of files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file)
+
+There are optional parameters for some customization of this function:
+
+* fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
+* colour - colour of the syntenic blocks (not inverted blocks), parameter use: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
+* colour - colour of the inverted syntenic blocks, parameter use: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
+* sex.chromosomes - The numeric range cannot accept characters, if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+
+ 
+### Example code using data files in data folder
+
+`draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
+
+### Example output:  
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true)  
+
+
+## inferCARs style
+
+
+## Input files for inferCARs
+
+Please provide a file for the alignment synteny blocks following this format, separated by tabs
+
+  DO NOT include a header line
+
+* Reference chromosome ID 
+* Reference start position
+* Reference end position
+* Target chromosome
+* Target start position
+* Target end position
+* Orientation
+* Reference species ID
+* Target species ID
+
+
+Please provide a file containing all aligned species, following this format, separated by tabs
+
+  DO NOT include a header line
+  
+* Chromosome ID 
+* Chromosome length
+* Species ID
+
+
+### Usage
+
+`library(syntenyPlotteR)`  
+
+`draw.ideogram("file_data","sizefile","output",fileformat = "png",colours = colours.default)`
+
+* file_data - file containing the syntenic blocks
+* sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
+* output  -  string assigned to the output file name 
+
+There are optional parameters for some customization of this function:
+
+* fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
+* colours - colours to assign to the ideograms in a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette, paramter use: colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+
+
+Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
+Chromosomes will be in the same order as in the target sizes file. 
+
+
+### Example code using data files in data folder
+
+`draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram")`
+
+
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_pairwise_image.png?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
+
+## Linear pairwise style
+
+
+## Input files for linear pairwise
+
+Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
+
+  DO NOT include a header line
+
+* Reference chromosome ID 
+* Reference start position
+* Reference end position
+* Target chromosome
+* Target start position
+* Target end position
+* Orientation
+* Reference species ID
+* Target species ID
+
+Please provide a file containing all aligned species, following this format, separated by tabs
+
+  DO NOT include a header line
+  
+* Chromosome ID 
+* Chromosome length
+* Species ID
+
+
+### Usage
+
+`library(syntenyPlotteR)`
+
+`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colour.default)`
+
+* output - string assigned to the output file name 
+* sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
+* ... - list of files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file)
+
+Please ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
+
+
+There are optional parameters for some customization of this function:
+
+* fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
+* colours - colours to assign to the bands between ideograms in a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette, paramter use: colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+
+
+### Example code using data files in data folder
+
+`draw.pairwise("example_pairwise","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
+
+
+### Example output:
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_pairwise.png?raw=true)
 
 
 ## To come soon:
