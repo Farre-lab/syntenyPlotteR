@@ -2,7 +2,7 @@
 #'
 #' This function draws Evolution Highway style plots.
 #' It requires as input:
-#' 1. ouput file name
+#' 1. output file name
 #' 2. the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
 #' 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
 #' reference chromosome, reference start position, reference end position, target chromosome,
