@@ -38,6 +38,23 @@ This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Qui
 ## To install:
 `devtools::install_github("marta-fb/syntenyPlotteR")`
 
+## Package Requirements
+This package requires the package ggplot2 to be able to run this must be installed and loaded in the R environment
+
+This can be done by:
+
+```r
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+alternatively ggplot2 is available in the tidyverse packages here:
+
+```r
+install.packages("tidyverse")
+library(tidyverse)
+```
+
 
 ## Evolution Highway style
 
