@@ -23,7 +23,7 @@ alternatively ggplot2 is available in the tidyverse packages here:
 The reformat.descrambler function also requires the stringR package included in the tidyverse collection of packages shown above or alternatively install using:
 
 `install.packages("stringr")`
-
+`library(stringr)`
 
 ## Reformatting DESCHRAMBLER .map data
 
