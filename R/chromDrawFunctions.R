@@ -1,3 +1,64 @@
+#' Reformat DESCHRAMBLER .map data
+#'
+#' This function takes the .map output from deschrambler and reformats it for syntenyPlotteR - this does not curate files only reformats it
+#'
+#' It requires as input:
+#' 1. The map data output from deschrambler
+#' 2. the output file name
+#'
+#' There are optional parameters for some customization of this function:
+#'
+#' 1. reference.species allows you to set the reference species identifier that will be set in the final output table i.e. reference.species = "ref"
+#' 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
+#'
+#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#'
+#' Example: reformat.descrambler("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
+#'
+#' @title Evolution Highway style plot
+#' @param file_data input file name for descrambler .map data
+#' @param filename output file name for reformatted data
+#' @param reference.species reference species identifier as a character string
+#' @param target.species target species identifier as a character string
+#' @return A text file in the working directory with the reformatted data
+#' @export
+#'
+#'
+
+reformat.deschrambler <- function(file_data,filename,reference.species = reference.sps,target.species = target.sps){
+  desch <- read.delim(file_data,header=F) #input .map data from deschrambler
+
+  line1 <- desch[seq(2, nrow(desch), 3), ]
+  line2 <- desch[seq(3, nrow(desch), 3), ]
+  combined <- as.data.frame(paste(line1,line2))
+  names(combined) <- "combined"
+
+  split <- as.data.frame(str_split_fixed(combined$combined," ", 4))
+  split$V1 <- gsub("[[:punct:]]", " ", split$V1)
+  split$V3 <- gsub("[[:punct:]]", " ", split$V3)
+
+  reference <- as.data.frame(str_split_fixed(split$V1," ", 4))
+  names(reference) <- c("reference.species","reference.chromosome","reference.start","reference.stop")
+  reference.no.chr <- gsub("chr", "", reference$reference.chromosome)
+  reference$reference.chromosome <- reference.no.chr
+
+  target <- as.data.frame(str_split_fixed(split$V3," ", 4))
+  names(target) <- c("target.species","target.chromosome","target.start","target.stop")
+  target.no.chr <- gsub("chr", "", target$target.chromosome)
+  target$target.chromosome <- target.no.chr
+
+  dataframe <- as.data.frame(cbind(reference$reference.chromosome,reference$reference.start,reference$reference.stop,
+                                   target$target.chromosome,target$target.start,target$target.stop,split$V4,reference$reference.species,target$target.species))
+
+  reference.sps <- unique(dataframe$V8)
+  target.sps <- unique(dataframe$V9)
+  dataframe$V8 <- reference.species
+  dataframe$V9 <- target.species
+
+  write.table(dataframe,file = paste0(filename,".txt"),quote = FALSE,col.names = FALSE,row.names = FALSE,sep="\t")
+}
+
+
 #' Draw Evolution Highway Plots
 #'
 #' This function draws Evolution Highway style plots.
