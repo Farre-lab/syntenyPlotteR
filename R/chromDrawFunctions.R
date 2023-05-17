@@ -22,13 +22,13 @@
 #' Example: draw.eh("outputName",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 #'
 #' @title Evolution Highway style plot
-#' @param output file name
+#' @param output output file name
 #' @param chrRange range of chromosome numbers in the reference as numbers i.e. 1:29
 #' @param ... files containing the syntentic blocks from the alignment
-#' @param output file format desired input as fileformat = "png" (default is "png")
-#' @param sexChromosome character value for sex chromosomes input as sex.chromosome = "X" or c("X","Y") (default is "X")
+#' @param fileformat output file format desired input as fileformat = "png" (default is "png")
+#' @param sex.chromosome character value for sex chromosomes input as sex.chromosome = "X" or c("X","Y") (default is "X")
 #' @param colour set colour for non-inverted syntenic blocks input as colour = "red" (default is "lightblue")
-#' @param colour set colour for inverted syntenic blocks input as inverted.colour = "blue" (default is "lightpink")
+#' @param inverted.colour set colour for inverted syntenic blocks input as inverted.colour = "blue" (default is "lightpink")
 #' @return An image with the comparative drawings
 #' @export
 #'
@@ -157,11 +157,11 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' Example: draw.pairwise("outputname","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 #'
 #' @title Pairwise synteny plot
-#' @param output file name
-#' @param ChromosomeSize file
-#' @param synteny files (any number of alignment files can be entered)
-#' @param output file format specified using fileformat = "pdf" (the default is "png")
-#' @param concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
+#' @param output output file name
+#' @param sizefile Chromosome Size file
+#' @param ... synteny files (any number of alignment files can be entered)
+#' @param fileformat output file format specified using fileformat = "pdf" (the default is "png")
+#' @param colours concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
 #' @return A file with comparative drawings
 #' @export
 #'
@@ -351,9 +351,10 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
 #' Example: draw.ideogram(synteny_file, target_chr_size, reference_chr_size)
 #' @title Draw ideograms in inferCARs style
 #' @param file_data Path to the syntenic blocks file
-#' @param Chromosomesize file
-#' @param output file format specified using fileformat = "pdf" (the default is "png")
-#' @param concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
+#' @param sizefile Chromosome size file
+#' @param output output file name
+#' @param fileformat output file format specified using fileformat = "pdf" (the default is "png")
+#' @param colours concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
 #' @return A file with the ideogram
 #' @export
 
