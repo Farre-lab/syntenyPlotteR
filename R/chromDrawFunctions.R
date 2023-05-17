@@ -1,3 +1,63 @@
+#' Reformat DESCHRAMBLER .map data
+#'
+#' This function takes the .map output from deschrambler and reformats it for syntenyPlotteR - this does not curate files only reformats it
+#'
+#' It requires as input:
+#' 1. The map data output from deschrambler
+#' 2. the output file name
+#'
+#' There are optional parameters for some customization of this function:
+#'
+#' 1. reference.species allows you to set the reference species identifier that will be set in the final output table i.e. reference.species = "ref"
+#' 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
+#'
+#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#'
+#' Example: reformat.descrambler("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
+#'
+#' @title Evolution Highway style plot
+#' @param file_data input file name for descrambler .map data
+#' @param filename output file name for reformatted data
+#' @param reference.species reference species identifier as a character string
+#' @param target.species target species identifier as a character string
+#' @return A text file in the working directory with the reformatted data
+#' @export
+#'
+#'
+reformat.deschrambler <- function(file_data,filename,reference.species = reference.sps,target.species = target.sps){
+  desch <- read.delim(file_data,header=F) #input .map data from deschrambler
+
+  line1 <- desch[seq(2, nrow(desch), 3), ]
+  line2 <- desch[seq(3, nrow(desch), 3), ]
+  combined <- as.data.frame(paste(line1,line2))
+  names(combined) <- "combined"
+
+  split <- as.data.frame(str_split_fixed(combined$combined," ", 4))
+  split$V1 <- gsub("[[:punct:]]", " ", split$V1)
+  split$V3 <- gsub("[[:punct:]]", " ", split$V3)
+
+  reference <- as.data.frame(str_split_fixed(split$V1," ", 4))
+  names(reference) <- c("reference.species","reference.chromosome","reference.start","reference.stop")
+  reference.no.chr <- gsub("chr", "", reference$reference.chromosome)
+  reference$reference.chromosome <- reference.no.chr
+
+  target <- as.data.frame(str_split_fixed(split$V3," ", 4))
+  names(target) <- c("target.species","target.chromosome","target.start","target.stop")
+  target.no.chr <- gsub("chr", "", target$target.chromosome)
+  target$target.chromosome <- target.no.chr
+
+  dataframe <- as.data.frame(cbind(reference$reference.chromosome,reference$reference.start,reference$reference.stop,
+                                   target$target.chromosome,target$target.start,target$target.stop,split$V4,reference$reference.species,target$target.species))
+
+  reference.sps <- unique(dataframe$V8)
+  target.sps <- unique(dataframe$V9)
+  dataframe$V8 <- reference.species
+  dataframe$V9 <- target.species
+
+  write.table(dataframe,file = paste0(filename,".txt"),quote = FALSE,col.names = FALSE,row.names = FALSE,sep="\t")
+}
+
+
 #' Draw Evolution Highway Plots
 #'
 #' This function draws Evolution Highway style plots.
@@ -14,6 +74,9 @@
 #' 2. The colour of the syntenic blocks (not inverted blocks) can be changed by inputting: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
 #' 3. The colour of the inverted syntenic blocks can be changed by inputting: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
 #' 4. The numeric range cannot accept the letter values for the sex chromosomes, thus if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+#' 5. The width of the image created can be changed by inputting: w = 5.5
+#' 6. The height of the image created can be changed by inputting: h = 10
+#' 7. The point size of the image created can be changed by inputting: ps = 10
 #'
 #' The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
 #'
@@ -29,11 +92,14 @@
 #' @param sex.chromosome character value for sex chromosomes input as sex.chromosome = "X" or c("X","Y") (default is "X")
 #' @param colour set colour for non-inverted syntenic blocks input as colour = "red" (default is "lightblue")
 #' @param inverted.colour set colour for inverted syntenic blocks input as inverted.colour = "blue" (default is "lightpink")
+#' @param w width of output image
+#' @param h height of output image
+#' @param ps point size of output image
 #' @return An image with the comparative drawings
 #' @export
 #'
 
-draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X") {
+draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X",w=5.5,h=10,ps=10) {
 
   colours = c("1" = colour, "-1" = inverted.colour)
 
@@ -89,7 +155,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
       ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
 
 
-    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=5.5, height =10, pointsize = 10)
+    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
   }
 
@@ -123,11 +189,12 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
       ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
 
 
-    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=8.5, height =10, pointsize = 5)
+    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
   }
 
 }
+
 
 #' Draw Pairwise Synteny Plots
 #'
@@ -148,7 +215,8 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
 #' 2. The colour of the synteny bands can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 #' e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
-#'
+#' 3. The width of the image created can be changed by inputting: w = 5.5
+#' 4. The height of the image created can be changed by inputting: h = 10
 #'
 #' The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms
 #'
@@ -162,10 +230,12 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' @param ... synteny files (any number of alignment files can be entered)
 #' @param fileformat output file format specified using fileformat = "pdf" (the default is "png")
 #' @param colours concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
+#' @param w width of output image
+#' @param h height of output image
 #' @return A file with comparative drawings
 #' @export
 #'
-draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colour.default){
+draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colour.default,w=13,h=5){
   #The below function converts coordinates to linear genome and creates synteny polygon coordinates
   synteny.data.reframing <- function(data,tar.y,ref.y,compiled.size){
     synteny <- data.frame()
@@ -314,7 +384,7 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
                    legend.position="none")
 
   #save plot as image
-  ggsave(paste0(output,".",fileformat),p,device = fileformat,scale = 1.5)
+  ggsave(paste0(output,".",fileformat),p,device = fileformat,width = w, height = h)
 }
 
 
@@ -337,7 +407,9 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
 #' 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
 #' 2. The colour of the ideograms can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 #' e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
-#'
+#' 3. The width of the image created can be changed by inputting: w = 5.5
+#' 4. The height of the image created can be changed by inputting: h = 10
+#' 5. The point size of the image created can be changed by inputting: ps = 10
 #'
 #' Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
 #' Chromosomes will be in the same order as in the target chromosomes in the chromosome length file
@@ -355,10 +427,13 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
 #' @param output output file name
 #' @param fileformat output file format specified using fileformat = "pdf" (the default is "png")
 #' @param colours concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used
+#' @param w width of output image
+#' @param h height of output image
+#' @param ps point size of output image
 #' @return A file with the ideogram
 #' @export
 
-draw.ideogram <- function(file_data,sizefile,output,fileformat = "png",colours = colours.default) {
+draw.ideogram <- function(file_data,sizefile,output,fileformat = "png",colours = colours.default,w=8.5,h=10,ps=5) {
   # To make the rectangles wider, change the height of the pdf
   # Refchr refstart ref end tarchr tarstart tarend - ref is ideogram target is used for painting and diagonals
   colours.default <- c("1" = "#BFD73B", "2" = "#39ACE2", "3" = "#F16E8A",
@@ -442,11 +517,10 @@ draw.ideogram <- function(file_data,sizefile,output,fileformat = "png",colours =
       legend.title.align = 0.5) +
     ggplot2::guides(fill = ggplot2::guide_legend(ncol = 1)) +
     ggplot2::scale_fill_manual(values = colours) +
-    ggplot2::scale_x_continuous(breaks = c(0,2.5e+07,5e+07,7.5e+07,1e+08,1.25e+08,1.5e+08,1.75e+08,2e+08),
-                                labels = c("0","25","50","75","100","125","150","175","200"))
+    ggplot2::scale_x_continuous(breaks = c(0,2.5e+07,5e+07,7.5e+07,1e+08,1.25e+08,1.5e+08,1.75e+08,2e+08,2.25e+08,2.5e+08,2.75e+08,3e+08,3.25e+08,3.5e+08),
+                                labels = c("0","25","50","75","100","125","150","175","200","225","250","275","300","325","350"))
 
-  ggsave(paste0(output,".",fileformat),plots,device = fileformat,width=8.5, height =10, pointsize = 5)
+  ggsave(paste0(output,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
 }
-
 

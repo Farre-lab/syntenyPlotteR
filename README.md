@@ -19,9 +19,41 @@ alternatively ggplot2 is available in the tidyverse packages here:
 `install.packages("tidyverse")`
 `library(tidyverse)`
 
+
+The reformat.descrambler function also requires the stringR package included in the tidyverse collection of packages shown above or alternatively install using:
+
+`install.packages("stringr")`
+
+
+## Reformatting DESCHRAMBLER .map data
+
+The syntenyPlotteR package includes a function to reformat .map synteny data from DESCHRAMBLER - this does not curate files only reformats it
+
+### Usage 
+
+`library(syntenyPlotteR)`
+
+`reformat.deschrambler("file_data","filename",reference.species = "reference.sps",target.species = "target.sps")`
+
+* file_data - .map output file from DESCHRAMBLER
+* filename - output file name for reformatted data in a character string
+
+
+There are optional parameters for some customization of this function:
+
+* reference.species - reference species ID as character string for final output table 
+* target.species - target species ID as character string for final output table 
+
+
+### Example code using data files in data folder
+
+`reformat.deschrambler("deschrambler.output","reformatted.data")`
+
+
+
 ## Evolution Highway style
 
-## Input files for Evolution Highway
+### Input files for Evolution Highway
 
 Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
 
@@ -41,7 +73,7 @@ Please provide a file for each pairwise alignment from the newest species (first
 ### Usage
 `library(syntenyPlotteR)`
 
-`draw.eh("output",chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X")`
+`draw.eh("output",chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X",w=5.5,h=10,ps=10)`
 
 
 * output - string assigned to name of output file name
@@ -54,6 +86,9 @@ There are optional parameters for some customization of this function:
 * colour - colour of the syntenic blocks (not inverted blocks), parameter use: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
 * colour - colour of the inverted syntenic blocks, parameter use: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
 * sex.chromosomes - The numeric range cannot accept characters, if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+* w -  The width of the image created can be changed by using: w = 5.5
+* h -  The height of the image created can be changed by using: h = 10
+* ps - The point size of the image created can be changed by using: ps = 10
 
  
 ### Example code using data files in data folder
@@ -68,7 +103,7 @@ There are optional parameters for some customization of this function:
 ## inferCARs style
 
 
-## Input files for inferCARs
+### Input files for inferCARs
 
 Please provide a file for the alignment synteny blocks following this format, separated by tabs
 
@@ -98,7 +133,7 @@ Please provide a file containing all aligned species, following this format, sep
 
 `library(syntenyPlotteR)`  
 
-`draw.ideogram("file_data","sizefile","output",fileformat = "png",colours = colours.default)`
+`draw.ideogram("file_data","sizefile","output",fileformat = "png",colours = colours.default,w=8.5,h=10,ps=5)`
 
 * file_data - file containing the syntenic blocks
 * sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
@@ -108,7 +143,9 @@ There are optional parameters for some customization of this function:
 
 * fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
 * colours - colours to assign to the ideograms in a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette, paramter use: colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
-
+* w -  The width of the image created can be changed by using: w = 5.5
+* h -  The height of the image created can be changed by using: h = 10
+* ps - The point size of the image created can be changed by using: ps = 10
 
 Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
 Chromosomes will be in the same order as in the target sizes file. 
@@ -126,7 +163,7 @@ Chromosomes will be in the same order as in the target sizes file.
 ## Linear pairwise style
 
 
-## Input files for linear pairwise
+### Input files for linear pairwise
 
 Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
 
@@ -155,7 +192,7 @@ Please provide a file containing all aligned species, following this format, sep
 
 `library(syntenyPlotteR)`
 
-`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colour.default)`
+`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colour.default,w=13,h=5)`
 
 * output - string assigned to the output file name 
 * sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
@@ -168,6 +205,8 @@ There are optional parameters for some customization of this function:
 
 * fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
 * colours - colours to assign to the bands between ideograms in a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette, paramter use: colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+* w -  The width of the image created can be changed by using: w = 5.5
+* h -  The height of the image created can be changed by using: h = 10
 
 
 ### Example code using data files in data folder
