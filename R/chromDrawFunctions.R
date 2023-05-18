@@ -33,16 +33,16 @@ reformat.deschrambler <- function(file_data,filename,reference.species = referen
   combined <- as.data.frame(paste(line1,line2))
   names(combined) <- "combined"
 
-  split <- as.data.frame(str_split_fixed(combined$combined," ", 4))
+  split <- as.data.frame(stringr::str_split_fixed(combined$combined," ", 4))
   split$V1 <- gsub("[[:punct:]]", " ", split$V1)
   split$V3 <- gsub("[[:punct:]]", " ", split$V3)
 
-  reference <- as.data.frame(str_split_fixed(split$V1," ", 4))
+  reference <- as.data.frame(stringr::str_split_fixed(split$V1," ", 4))
   names(reference) <- c("reference.species","reference.chromosome","reference.start","reference.stop")
   reference.no.chr <- gsub("chr", "", reference$reference.chromosome)
   reference$reference.chromosome <- reference.no.chr
 
-  target <- as.data.frame(str_split_fixed(split$V3," ", 4))
+  target <- as.data.frame(stringr::str_split_fixed(split$V3," ", 4))
   names(target) <- c("target.species","target.chromosome","target.start","target.stop")
   target.no.chr <- gsub("chr", "", target$target.chromosome)
   target$target.chromosome <- target.no.chr
@@ -127,7 +127,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
     data$text_size2=80*((data$end-data$start)/100000)
     alignments <- rbind(data,alignments) }
 
-  plots <- ggplot()
+  plots <- ggplot2::ggplot()
   for (ID in c(chrRange)) {
     #ID=chrRange
     print(ID)
@@ -161,7 +161,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
   }
 
 
-  plots <- ggplot()
+  plots <- ggplot2::ggplot()
   for (ID in c(sex.chromosome)) {
     #ID=sex.chromosome
     print(ID)
