@@ -4,24 +4,68 @@
 \alias{draw.eh}
 \title{Evolution Highway style plot}
 \usage{
-draw.eh(infile, output, chrRange)
+draw.eh(
+  output,
+  chrRange,
+  ...,
+  fileformat = "png",
+  colour = "lightblue",
+  inverted.colour = "lightpink",
+  sex.chromosome = "X",
+  w = 5.5,
+  h = 10,
+  ps = 10
+)
 }
 \arguments{
-\item{infile}{Path to the syntenic blocks file}
+\item{output}{output file name}
 
-\item{output}{file name}
+\item{chrRange}{range of chromosome numbers in the reference as numbers i.e. 1:29}
 
-\item{chrRange}{range of chromosome numbers in the reference "1:29"}
+\item{...}{files containing the syntentic blocks from the alignment}
+
+\item{fileformat}{output file format desired input as fileformat = "png" (default is "png")}
+
+\item{colour}{set colour for non-inverted syntenic blocks input as colour = "red" (default is "lightblue")}
+
+\item{inverted.colour}{set colour for inverted syntenic blocks input as inverted.colour = "blue" (default is "lightpink")}
+
+\item{sex.chromosome}{character value for sex chromosomes input as sex.chromosome = "X" or c("X","Y") (default is "X")}
+
+\item{w}{width of output image}
+
+\item{h}{height of output image}
+
+\item{ps}{point size of output image}
 }
 \value{
-A pdf file with the comparative drawings
+An image with the comparative drawings
 }
 \description{
 Draw Evolution Highway Plots
 }
 \details{
-This function draws Evolution Highway style plots. It requieres as input the syntenic blocks following this
-format: chr,start,end,targetChr,targetStart,targetEnd,orient,targetSpecies separated by tabs
-It also requieres the output file name and the range of chromosomes of the reference species.
-Example: draw.eh(input.csv,goat,"1:29")
+This function draws Evolution Highway style plots.
+It requires as input:
+1. output file name
+2. the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
+3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
+reference chromosome, reference start position, reference end position, target chromosome,
+target start position, target end position, orient, reference species identifier, target species identifier
+
+There are optional parameters for some customization of this function:
+
+1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+2. The colour of the syntenic blocks (not inverted blocks) can be changed by inputting: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
+3. The colour of the inverted syntenic blocks can be changed by inputting: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
+4. The numeric range cannot accept the letter values for the sex chromosomes, thus if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+5. The width of the image created can be changed by inputting: w = 5.5
+6. The height of the image created can be changed by inputting: h = 10
+7. The point size of the image created can be changed by inputting: ps = 10
+
+The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
+
+The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+
+Example: draw.eh("outputName",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 }

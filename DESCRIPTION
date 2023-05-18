@@ -8,7 +8,7 @@ Description: Package with 3 functions to draw syntenic relationships between gen
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3.9000
 Suggests: 
     knitr,
     rmarkdown

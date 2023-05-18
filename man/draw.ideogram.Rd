@@ -4,29 +4,70 @@
 \alias{draw.ideogram}
 \title{Draw ideograms in inferCARs style}
 \usage{
-draw.ideogram(file_data, file_tarsize, file_refsize)
+draw.ideogram(
+  file_data,
+  sizefile,
+  output,
+  fileformat = "png",
+  colours = colours.default,
+  w = 8.5,
+  h = 10,
+  ps = 5
+)
 }
 \arguments{
 \item{file_data}{Path to the syntenic blocks file}
 
-\item{file_tarsize}{Path to the target chromosomes length file}
+\item{sizefile}{Chromosome size file}
 
-\item{file_refsize}{Path to the reference chromosomes length file}
+\item{output}{output file name}
+
+\item{fileformat}{output file format specified using fileformat = "pdf" (the default is "png")}
+
+\item{colours}{concatenated string of chromosome IDs and assigned colours if desired using the format colours = c("1" = "red", "2" = "blue", "3" = "green","X" = "grey") if the no colours are assigned default values will be used}
+
+\item{w}{width of output image}
+
+\item{h}{height of output image}
+
+\item{ps}{point size of output image}
 }
 \value{
-A pdf file with the ideogram
+A file with the ideogram
 }
 \description{
 Draw synteny ideograms in inferCARS style
 }
 \details{
 This function draws pairwise synteny plots in inferCARS style.
-Inputs are tab separated files, one with the synteny blocks and two files with target and reference chromosome sizes.
-Synteny blocks file should be as: targetChr targetStart targetEnd referenceChr referenceStart referenceEnd Orientation
-Output will be a pdf file with the ideogram.
+Inputs are tab separated files;
+It requires as input:
+1. file containing the syntenic blocks following this format:
+reference chromosome, reference start position, reference end position, target chromosome,
+target start position, target end position, orient, reference species identifier, target species identifier
+2. a file with all chromosomes, chromosome lengths, and species identifiers for all species in the synteny analysis in this format:
+chromosome ID, chromosome length, species identifier
+3. the output file name
+
+Please separate files by tab and ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
+
+There are optional parameters for some customization of this function:
+
+1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+2. The colour of the ideograms can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
+e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+3. The width of the image created can be changed by inputting: w = 5.5
+4. The height of the image created can be changed by inputting: h = 10
+5. The point size of the image created can be changed by inputting: ps = 10
 
 Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.
-Chromosomes will be in the same order as in the target sizes file.
+Chromosomes will be in the same order as in the target chromosomes in the chromosome length file
+
+
+The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+
+Example: draw.ideogram("example_alignment_1.txt","example_lengths.txt","outputname",fileformat = "pdf")
+
 
 Example: draw.ideogram(synteny_file, target_chr_size, reference_chr_size)
 }
