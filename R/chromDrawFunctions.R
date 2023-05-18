@@ -156,7 +156,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
       ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
 
 
-    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
+    ggplot2::ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
   }
 
@@ -190,7 +190,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
       ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
 
 
-    ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
+    ggplot2::ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
   }
 
@@ -350,7 +350,7 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
   compiled.size$chromosome <-as.factor(compiled.size$chromosome)
 
   #prepare plot
-  p <- ggplot()
+  p <- ggplot2::ggplot()
 
   #for each file input to function which has been prepared for the polygon plot, plot onto graph
   for(i in 1:length(listsynt)){
@@ -385,7 +385,7 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
                    legend.position="none")
 
   #save plot as image
-  ggsave(paste0(output,".",fileformat),p,device = fileformat,width = w, height = h)
+  ggplot2::ggsave(paste0(output,".",fileformat),p,device = fileformat,width = w, height = h)
 }
 
 
@@ -521,7 +521,7 @@ draw.ideogram <- function(file_data,sizefile,output,fileformat = "png",colours =
     ggplot2::scale_x_continuous(breaks = c(0,2.5e+07,5e+07,7.5e+07,1e+08,1.25e+08,1.5e+08,1.75e+08,2e+08,2.25e+08,2.5e+08,2.75e+08,3e+08,3.25e+08,3.5e+08),
                                 labels = c("0","25","50","75","100","125","150","175","200","225","250","275","300","325","350"))
 
-  ggsave(paste0(output,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
+  ggplot2::ggsave(paste0(output,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
 
 }
 
