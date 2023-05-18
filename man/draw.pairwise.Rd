@@ -37,10 +37,14 @@ Draw Pairwise Synteny Plots
 }
 \details{
 This function draws pairwise synteny plots.
+
 It requires:
+
 1. the output file name;
+
 2. a file with all chromosomes, chromosome lengths, and species identifiers for all species in the synteny analysis in this format:
 chromosome ID, chromosome length, species identifier
+
 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
 reference chromosome, reference start position, reference end position, target chromosome,
 target start position, target end position, orient, reference species identifier, target species identifier
@@ -51,9 +55,12 @@ Please separate files by tab and ensure any species identifiers used between len
 There are optional parameters for some customization of this function:
 
 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+
 2. The colour of the synteny bands can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+
 3. The width of the image created can be changed by inputting: w = 5.5
+
 4. The height of the image created can be changed by inputting: h = 10
 
 The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms

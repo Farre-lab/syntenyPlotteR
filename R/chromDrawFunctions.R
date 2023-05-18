@@ -3,12 +3,15 @@
 #' This function takes the .map output from deschrambler and reformats it for syntenyPlotteR - this does not curate files only reformats it
 #'
 #' It requires as input:
+#'
 #' 1. The map data output from deschrambler
+#'
 #' 2. the output file name
 #'
 #' There are optional parameters for some customization of this function:
 #'
 #' 1. reference.species allows you to set the reference species identifier that will be set in the final output table i.e. reference.species = "ref"
+#'
 #' 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
 #'
 #' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
@@ -62,9 +65,13 @@ reformat.deschrambler <- function(file_data,filename,reference.species = referen
 #' Draw Evolution Highway Plots
 #'
 #' This function draws Evolution Highway style plots.
+#'
 #' It requires as input:
+#'
 #' 1. output file name
+#'
 #' 2. the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
+#'
 #' 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
 #' reference chromosome, reference start position, reference end position, target chromosome,
 #' target start position, target end position, orient, reference species identifier, target species identifier
@@ -72,11 +79,17 @@ reformat.deschrambler <- function(file_data,filename,reference.species = referen
 #' There are optional parameters for some customization of this function:
 #'
 #' 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+#'
 #' 2. The colour of the syntenic blocks (not inverted blocks) can be changed by inputting: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
+#'
 #' 3. The colour of the inverted syntenic blocks can be changed by inputting: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
+#'
 #' 4. The numeric range cannot accept the letter values for the sex chromosomes, thus if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+#'
 #' 5. The width of the image created can be changed by inputting: w = 5.5
+#'
 #' 6. The height of the image created can be changed by inputting: h = 10
+#'
 #' 7. The point size of the image created can be changed by inputting: ps = 10
 #'
 #' The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
@@ -200,10 +213,14 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' Draw Pairwise Synteny Plots
 #'
 #' This function draws pairwise synteny plots.
+#'
 #' It requires:
+#'
 #' 1. the output file name;
+#'
 #' 2. a file with all chromosomes, chromosome lengths, and species identifiers for all species in the synteny analysis in this format:
 #' chromosome ID, chromosome length, species identifier
+#'
 #' 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
 #' reference chromosome, reference start position, reference end position, target chromosome,
 #' target start position, target end position, orient, reference species identifier, target species identifier
@@ -214,9 +231,12 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' There are optional parameters for some customization of this function:
 #'
 #' 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+#'
 #' 2. The colour of the synteny bands can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 #' e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+#'
 #' 3. The width of the image created can be changed by inputting: w = 5.5
+#'
 #' 4. The height of the image created can be changed by inputting: h = 10
 #'
 #' The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms
@@ -392,13 +412,18 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
 #' Draw synteny ideograms in inferCARS style
 #'
 #' This function draws pairwise synteny plots in inferCARS style.
+#'
 #' Inputs are tab separated files;
+#'
 #' It requires as input:
+#'
 #' 1. file containing the syntenic blocks following this format:
 #' reference chromosome, reference start position, reference end position, target chromosome,
 #' target start position, target end position, orient, reference species identifier, target species identifier
+#'
 #' 2. a file with all chromosomes, chromosome lengths, and species identifiers for all species in the synteny analysis in this format:
 #' chromosome ID, chromosome length, species identifier
+#'
 #' 3. the output file name
 #'
 #' Please separate files by tab and ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
@@ -406,10 +431,14 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
 #' There are optional parameters for some customization of this function:
 #'
 #' 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+#'
 #' 2. The colour of the ideograms can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 #' e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+#'
 #' 3. The width of the image created can be changed by inputting: w = 5.5
+#'
 #' 4. The height of the image created can be changed by inputting: h = 10
+#'
 #' 5. The point size of the image created can be changed by inputting: ps = 10
 #'
 #' Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.

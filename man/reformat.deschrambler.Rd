@@ -30,12 +30,15 @@ Reformat DESCHRAMBLER .map data
 This function takes the .map output from deschrambler and reformats it for syntenyPlotteR - this does not curate files only reformats it
 
 It requires as input:
+
 1. The map data output from deschrambler
+
 2. the output file name
 
 There are optional parameters for some customization of this function:
 
 1. reference.species allows you to set the reference species identifier that will be set in the final output table i.e. reference.species = "ref"
+
 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
 
 The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)

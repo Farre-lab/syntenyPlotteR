@@ -40,13 +40,18 @@ Draw synteny ideograms in inferCARS style
 }
 \details{
 This function draws pairwise synteny plots in inferCARS style.
+
 Inputs are tab separated files;
+
 It requires as input:
+
 1. file containing the syntenic blocks following this format:
 reference chromosome, reference start position, reference end position, target chromosome,
 target start position, target end position, orient, reference species identifier, target species identifier
+
 2. a file with all chromosomes, chromosome lengths, and species identifiers for all species in the synteny analysis in this format:
 chromosome ID, chromosome length, species identifier
+
 3. the output file name
 
 Please separate files by tab and ensure any species identifiers used between length and alignment files are matching (same identifiers and caseing)
@@ -54,10 +59,14 @@ Please separate files by tab and ensure any species identifiers used between len
 There are optional parameters for some customization of this function:
 
 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+
 2. The colour of the ideograms can be altered by inputting a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette
 e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
+
 3. The width of the image created can be changed by inputting: w = 5.5
+
 4. The height of the image created can be changed by inputting: h = 10
+
 5. The point size of the image created can be changed by inputting: ps = 10
 
 Target is the species which chromosomes will be painted. Reference will be used for painting and diagonals.

@@ -46,9 +46,13 @@ Draw Evolution Highway Plots
 }
 \details{
 This function draws Evolution Highway style plots.
+
 It requires as input:
+
 1. output file name
+
 2. the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
+
 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
 reference chromosome, reference start position, reference end position, target chromosome,
 target start position, target end position, orient, reference species identifier, target species identifier
@@ -56,11 +60,17 @@ target start position, target end position, orient, reference species identifier
 There are optional parameters for some customization of this function:
 
 1. The format for saving the image i.e. png or pdf can be altered by inputting: fileformat = "pdf" (the default value is "png")
+
 2. The colour of the syntenic blocks (not inverted blocks) can be changed by inputting: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
+
 3. The colour of the inverted syntenic blocks can be changed by inputting: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
+
 4. The numeric range cannot accept the letter values for the sex chromosomes, thus if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+
 5. The width of the image created can be changed by inputting: w = 5.5
+
 6. The height of the image created can be changed by inputting: h = 10
+
 7. The point size of the image created can be changed by inputting: ps = 10
 
 The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
