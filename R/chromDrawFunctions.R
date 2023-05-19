@@ -256,7 +256,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' @return A file with comparative drawings
 #' @export
 #'
-draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colour.default,w=13,h=5){
+draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5){
   #The below function converts coordinates to linear genome and creates synteny polygon coordinates
   synteny.data.reframing <- function(data,tar.y,ref.y,compiled.size){
     synteny <- data.frame()
@@ -292,7 +292,7 @@ draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colou
     return(synteny)
   }
 
-  colour.default <- c("1" = "#BFD73B", "2" = "#39ACE2", "3" = "#F16E8A",
+  colours.default <- c("1" = "#BFD73B", "2" = "#39ACE2", "3" = "#F16E8A",
                       "4" = "#2DB995", "5" = "#855823", "6" = "#A085BD",
                       "7" = "#2EB560", "8" = "#D79128", "9" = "#FDBB63",
                       "10" = "#AFDFE5", "11" = "#BF1E2D", "12" = "purple4",
