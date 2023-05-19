@@ -164,7 +164,7 @@ Please provide a file for the alignment synteny blocks following this format, se
 * Target species ID
 
 
-Please provide a file containing all aligned species, following this format, separated by tabs
+Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
 
   DO NOT include a header line
   
@@ -227,7 +227,7 @@ Please provide a file for each pairwise alignment from the newest species (first
 * Reference species ID
 * Target species ID
 
-Please provide a file containing all aligned species, following this format, separated by tabs
+Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
 
   DO NOT include a header line
   
