@@ -25,6 +25,53 @@ The reformat.descrambler function also requires the stringR package included in 
 `install.packages("stringr")`
 `library(stringr)`
 
+## Input files 
+
+### DESCHRAMBLER output file format for reformat.deschrambler function
+
+If chromosome alignment was performed using DESCHRAMBLER please input the .map file 
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
+
+
+### Alignment file input format for draw.eh, draw.ideogram, and draw.pairwise functions
+
+Please provide a file for the alignment synteny blocks following this format, separated by tabs
+
+  DO NOT include a header line
+
+* Reference chromosome ID 
+* Reference start position
+* Reference end position
+* Target chromosome
+* Target start position
+* Target end position
+* Orientation
+* Reference species ID
+* Target species ID
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
+
+
+### Chromosome Length file for draw.ideogram and draw.pairwise functions
+
+Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
+
+  DO NOT include a header line
+  
+* Chromosome ID 
+* Chromosome length
+* Species ID
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true)  
+
+
 ## Reformatting DESCHRAMBLER .map data
 
 The syntenyPlotteR package includes a function to reformat .map synteny data from DESCHRAMBLER - this does not curate files only reformats it
@@ -50,22 +97,6 @@ There are optional parameters for some customization of this function:
 
 
 ## Evolution Highway style
-
-### Input files for Evolution Highway
-
-Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
 
 
 ### Usage
@@ -101,32 +132,6 @@ There are optional parameters for some customization of this function:
 ## inferCARs style
 
 
-### Input files for inferCARs
-
-Please provide a file for the alignment synteny blocks following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
-
-
-Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
-
-  DO NOT include a header line
-  
-* Chromosome ID 
-* Chromosome length
-* Species ID
-
-
 ### Usage
 
 `library(syntenyPlotteR)`  
@@ -158,33 +163,8 @@ Chromosomes will be in the same order as in the target sizes file.
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
 
+
 ## Linear pairwise style
-
-
-### Input files for linear pairwise
-
-Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
-
-Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
-
-  DO NOT include a header line
-  
-* Chromosome ID 
-* Chromosome length
-* Species ID
-
 
 ### Usage
 
@@ -225,3 +205,5 @@ There are optional parameters for some customization of this function:
 ### Citation:
 While we're preparing the publication, please cite:  
 Farré M, Kim J, et al. Evolution of gene regulation in ruminants differs between evolutionary breakpoint regions and homologous synteny blocks. Genome Research 2019 Apr;29(4):576-589
+
+
