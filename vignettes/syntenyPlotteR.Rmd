@@ -36,7 +36,9 @@ R package to draw synteny plots in three different styles
 This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Quigley (slq4@kent.ac.uk), and Marta Farré (m.farre-belmonte@kent.ac.uk)
 
 ## To install:
-`devtools::install_github("marta-fb/syntenyPlotteR")`
+```r
+devtools::install_github("marta-fb/syntenyPlotteR")
+```
 
 ## Package Requirements
 This package requires the package ggplot2 to be able to run this must be installed and loaded in the R environment
@@ -45,13 +47,14 @@ This can be done by:
 
 ```r
 install.packages("ggplot2")
+
 library(ggplot2)
 ```
-
 alternatively ggplot2 is available in the tidyverse packages here:
 
 ```r
 install.packages("tidyverse")
+
 library(tidyverse)
 ```
 
@@ -59,8 +62,55 @@ The reformat.descrambler function also requires the stringR package included in 
 
 ```r
 install.packages("stringr")
+
 library(stringr)
 ```
+
+## Input files 
+
+### DESCHRAMBLER output file format for reformat.deschrambler function
+
+If chromosome alignment was performed using DESCHRAMBLER please input the .map file 
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
+
+
+### Alignment file input format for draw.eh, draw.ideogram, and draw.pairwise functions
+
+Please provide a file for the alignment synteny blocks following this format, separated by tabs
+
+  DO NOT include a header line
+
+* Reference chromosome ID 
+* Reference start position
+* Reference end position
+* Target chromosome
+* Target start position
+* Target end position
+* Orientation
+* Reference species ID
+* Target species ID
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
+
+
+### Chromosome Length file for draw.ideogram and draw.pairwise functions
+
+Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
+
+  DO NOT include a header line
+  
+* Chromosome ID 
+* Chromosome length
+* Species ID
+
+### Example file format
+
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true)  
 
 
 ## Reformatting DESCHRAMBLER .map data
@@ -73,7 +123,6 @@ The syntenyPlotteR package includes a function to reformat .map synteny data fro
 library(syntenyPlotteR)
 
 reformat.deschrambler("file_data","filename",reference.species = "reference.sps",target.species = "target.sps")
-
 ```
 
 * file_data - .map output file from DESCHRAMBLER
@@ -94,22 +143,6 @@ reformat.deschrambler("example_map_1.map","reformatted.data")
 
 ## Evolution Highway style
 
-### Input files for Evolution Highway
-
-Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
-
 
 ### Usage
 ```r
@@ -117,7 +150,6 @@ library(syntenyPlotteR)
 
 draw.eh("output",chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X",w=5.5,h=10,ps=10)
 ```
-
 
 * output - string assigned to name of output file name
 * chrRange - the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22 
@@ -135,6 +167,7 @@ There are optional parameters for some customization of this function:
 
  
 ### Example code using data files in data folder
+
 ```r
 draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")
 ```
@@ -147,36 +180,10 @@ draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","
 ## inferCARs style
 
 
-### Input files for inferCARs
-
-Please provide a file for the alignment synteny blocks following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
-
-
-Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
-
-  DO NOT include a header line
-  
-* Chromosome ID 
-* Chromosome length
-* Species ID
-
-
 ### Usage
 
 ```r
-library(syntenyPlotteR)
+library(syntenyPlotteR)  
 
 draw.ideogram("file_data","sizefile","output",fileformat = "png",colours = colours.default,w=8.5,h=10,ps=5)
 ```
@@ -199,7 +206,7 @@ Chromosomes will be in the same order as in the target sizes file.
 
 ### Example code using data files in data folder
 
-```r 
+```r
 draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram")
 ```
 
@@ -208,33 +215,8 @@ draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram"
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
 
+
 ## Linear pairwise style
-
-
-### Input files for linear pairwise
-
-Please provide a file for each pairwise alignment from the newest species (first file) to the ancestors (last file), following this format, separated by tabs
-
-  DO NOT include a header line
-
-* Reference chromosome ID 
-* Reference start position
-* Reference end position
-* Target chromosome
-* Target start position
-* Target end position
-* Orientation
-* Reference species ID
-* Target species ID
-
-Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
-
-  DO NOT include a header line
-  
-* Chromosome ID 
-* Chromosome length
-* Species ID
-
 
 ### Usage
 
@@ -258,7 +240,9 @@ There are optional parameters for some customization of this function:
 * w -  The width of the image created can be changed by using: w = 5.5
 * h -  The height of the image created can be changed by using: h = 10
 
+
 ### Example code using data files in data folder
+
 ```r
 draw.pairwise("example_pairwise","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")
 ```
