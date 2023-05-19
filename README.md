@@ -44,6 +44,10 @@ There are optional parameters for some customization of this function:
 * reference.species - reference species ID as character string for final output table 
 * target.species - target species ID as character string for final output table 
 
+### Example code using data files in data folder
+
+`reformat.deschrambler("example_map_1.map","reformatted.data")`
+
 
 ## Evolution Highway style
 
