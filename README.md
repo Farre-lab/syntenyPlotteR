@@ -170,7 +170,7 @@ Chromosomes will be in the same order as in the target sizes file.
 
 `library(syntenyPlotteR)`
 
-`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colour.default,w=13,h=5)`
+`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5)`
 
 * output - string assigned to the output file name 
 * sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
