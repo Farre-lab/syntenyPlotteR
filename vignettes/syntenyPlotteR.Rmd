@@ -223,7 +223,7 @@ draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram"
 ```r
 library(syntenyPlotteR)
 
-draw.pairwise(output,sizefile,...,fileformat = "png",colours = colour.default,w=13,h=5)
+draw.pairwise(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5)
 ```
 
 * output - string assigned to the output file name 
