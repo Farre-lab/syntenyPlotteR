@@ -20,23 +20,25 @@ alternatively ggplot2 is available in the tidyverse packages here:
 `library(tidyverse)`
 
 
-The reformat.descrambler function also requires the stringR package included in the tidyverse collection of packages shown above or alternatively install using:
+The reformat.syntenyData function also requires the stringR package included in the tidyverse collection of packages shown above or alternatively install using:
 
 `install.packages("stringr")`
 `library(stringr)`
 
 ## Input files 
 
-### DESCHRAMBLER output file format for reformat.deschrambler function
+### Alignment output file format for reformat.syntenyData function
 
 If chromosome alignment was performed using DESCHRAMBLER please input the .map file 
+If chromosome alignment was performed using inferCARs please input the inferCARs output file 
+
 
 ### Example file format
 
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
 
 
-### Alignment file input format for draw.eh, draw.ideogram, and draw.pairwise functions
+### Alignment file input format for draw.eh, draw.ideogram, and draw.linear functions
 
 Please provide a file for the alignment synteny blocks following this format, separated by tabs
 
@@ -57,7 +59,7 @@ Please provide a file for the alignment synteny blocks following this format, se
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
 
 
-### Chromosome Length file for draw.ideogram and draw.pairwise functions
+### Chromosome Length file for draw.ideogram and draw.linear functions
 
 Please provide a file containing all aligned species in order from newest species – top of file – to ancestor – end of file, following this format, separated by tabs
 
@@ -72,17 +74,19 @@ Please provide a file containing all aligned species in order from newest specie
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true)  
 
 
-## Reformatting DESCHRAMBLER .map data
+## Reformatting alignment data
 
-The syntenyPlotteR package includes a function to reformat .map synteny data from DESCHRAMBLER - this does not curate files only reformats it
+The syntenyPlotteR package includes a function to reformat alignmenty synteny data such as from DESCHRAMBLER or inferCARs - this does not curate files only reformats it
+
+The function outputs a text file to the given file path or working directory containing the reformatted alignment data
 
 ### Usage 
 
 `library(syntenyPlotteR)`
 
-`reformat.deschrambler("file_data","filename",reference.species = "reference.sps",target.species = "target.sps")`
+`reformat.syntenyData("file_data","filename",reference.species = "reference.sps",target.species = "target.sps")`
 
-* file_data - .map output file from DESCHRAMBLER
+* file_data - alignment output file such as from DESCHRAMBLER/infeCARs
 * filename - output file name for reformatted data in a character string
 
 
@@ -93,7 +97,7 @@ There are optional parameters for some customization of this function:
 
 ### Example code using data files in data folder
 
-`reformat.deschrambler("example_map_1.map","reformatted.data")`
+`reformat.syntenyData("example_map_1.map","reformatted.data")`
 
 
 ## Evolution Highway style
@@ -164,13 +168,13 @@ Chromosomes will be in the same order as in the target sizes file.
 ![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
 
 
-## Linear pairwise style
+## Linear style
 
 ### Usage
 
 `library(syntenyPlotteR)`
 
-`draw.pairwise(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5)`
+`draw.linear(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5)`
 
 * output - string assigned to the output file name 
 * sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
@@ -189,12 +193,12 @@ There are optional parameters for some customization of this function:
 
 ### Example code using data files in data folder
 
-`draw.pairwise("example_pairwise","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
+`draw.linear("example_linear","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
 
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_pairwise.png?raw=true)
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true)
 
 
 ## To come soon:

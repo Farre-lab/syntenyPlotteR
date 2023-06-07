@@ -1,10 +1,10 @@
-#' Reformat DESCHRAMBLER .map data
+#' Reformat synteny data
 #'
-#' This function takes the .map output from deschrambler and reformats it for syntenyPlotteR - this does not curate files only reformats it
+#' This function takes output from alignment softwares such as deschrambler and inferCARs and reformats it for syntenyPlotteR - this does not curate files only reformats it
 #'
 #' It requires as input:
 #'
-#' 1. The map data output from deschrambler
+#' 1. The data output from deschrambler or inferCARs
 #'
 #' 2. the output file name
 #'
@@ -16,9 +16,9 @@
 #'
 #' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
 #'
-#' Example: reformat.descrambler("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
+#' Example: reformat.syntenyData("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
 #'
-#' @title Evolution Highway style plot
+#' @title Reformat synteny data
 #' @param file_data input file name for descrambler .map data
 #' @param filename output file name for reformatted data
 #' @param reference.species reference species identifier as a character string
@@ -28,7 +28,7 @@
 #'
 #'
 
-reformat.deschrambler <- function(file_data,filename,reference.species = reference.sps,target.species = target.sps){
+reformat.syntenyData <- function(file_data,filename,reference.species = reference.sps,target.species = target.sps){
   desch <- read.delim(file_data,header=F) #input .map data from deschrambler
 
   line1 <- desch[seq(2, nrow(desch), 3), ]
@@ -210,9 +210,9 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 }
 
 
-#' Draw Pairwise Synteny Plots
+#' Draw Linear Synteny Plots
 #'
-#' This function draws pairwise synteny plots.
+#' This function draws linear synteny plots.
 #'
 #' It requires:
 #'
@@ -243,9 +243,9 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #'
 #' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
 #'
-#' Example: draw.pairwise("outputname","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
+#' Example: draw.linear("outputname","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 #'
-#' @title Pairwise synteny plot
+#' @title Linear synteny plot
 #' @param output output file name
 #' @param sizefile Chromosome Size file
 #' @param ... synteny files (any number of alignment files can be entered)
@@ -256,7 +256,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' @return A file with comparative drawings
 #' @export
 #'
-draw.pairwise <- function(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5){
+draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5){
   #The below function converts coordinates to linear genome and creates synteny polygon coordinates
   synteny.data.reframing <- function(data,tar.y,ref.y,compiled.size){
     synteny <- data.frame()
