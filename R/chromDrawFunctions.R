@@ -307,7 +307,7 @@ draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours
                       "1A" = "pink", "1B" = "dark blue", "4A" = "light green",
                       "Gap" = "white", "LG2" = "black", "LG5" = "#CC99CC")
 
-  xstart<-xend<-refchr<-tarchr<-x<-y<-group<-fill<-NULL
+  xstart<-xend<-refchr<-tarchr<-x<-y<-group<-fill<-chromosome<-species<-NULL
   sizes <-read.delim(sizefile, header=FALSE) #to be consistent with naming in EH
   names(sizes) <- c("chromosome","size","species")
   sizes$size <- as.numeric(gsub(",","",sizes$size))

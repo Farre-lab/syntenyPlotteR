@@ -4,7 +4,7 @@ Title: An R package for genome synteny visualization
 Version: 0.2.0
 Authors@R: c(person("Marta","Farre", email= "m.farre-belmonte@kent.ac.uk", role = c("aut", "cre")), person("Sarah","Quigley", email= "slq4@kent.ac.uk", role = "aut"), person("Joana", "Damas", email = "joanadamas@gmail.com", role = "aut"), person("Denis", "Larkin", email = "dlarkin@rvc.ac.uk", role = "aut"))
 Maintainer: Marta Farre <m.farre-belmonte@kent.ac.uk>
-Description: Package with 3 functions to draw syntenic relationships between genome assemblies and 1 function to reformat common alignment data formats such as from DESHRAMBLER and inferCARs
+Description: Package with 3 functions to draw syntenic relationships between genome assemblies and 1 function to reformat common synteny data formats such as from DESRAMBLER and inferCARS.
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
