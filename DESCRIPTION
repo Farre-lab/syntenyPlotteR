@@ -16,7 +16,8 @@ VignetteBuilder: knitr
 Imports:
     ggplot2,
     stringr,
-    utils
+    utils,
+    stats
 NeedsCompilation: no
 BugReports: https://github.com/marta-fb/syntenyPlotteR/issues
 URL: https://github.com/marta-fb/syntenyPlotteR
