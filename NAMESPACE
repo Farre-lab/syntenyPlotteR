@@ -1,3 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("grDevices", "dev.off", "pdf")
-importFrom("utils", "read.delim", "read.table")
+importFrom("utils", "read.delim", "read.table","write.table")
