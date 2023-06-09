@@ -15,7 +15,7 @@ It has been tested in Windows 10 R v4.0.3, Windows 11 with R v4.1.1 and v4.2.2 a
 7. [Linear style](https://github.com/Farre-lab/syntenyPlotteR#linear-style)
 
 ## To install:
-`devtools::install_github("marta-fb/syntenyPlotteR")`
+`devtools::install_github("Farre-lab/syntenyPlotteR")`
 
 ### Package Requirements
 This package requires the package ggplot2 to be able to run this must be installed and loaded in the R environment
@@ -45,7 +45,7 @@ We provide a funtion to modify the output of DESCHRAMBLER or any other synteny t
 
 **Alignment output file format for reformat.syntenyData function**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true" width="300" />
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true" width="300" />
 
 **Otherwise, you can provide your input Alignment file separated by tabs**
 
@@ -63,7 +63,7 @@ We provide a funtion to modify the output of DESCHRAMBLER or any other synteny t
 
 **Example input alignment file format for the three functions**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true" width="400"/>
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true" width="400"/>
 
 
 ### Chromosome Length file for draw.ideogram and draw.linear functions
@@ -78,7 +78,7 @@ Please provide a file containing all aligned species in order from newest specie
 
 **Example file format**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true" width="300"/>
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true" width="300"/>
 
 ---
 
@@ -138,7 +138,7 @@ There are optional parameters for some customization of this function:
 
 **Example output**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true" width="300"/>
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true" width="300"/>
 
 ---
 
@@ -174,7 +174,7 @@ Chromosomes will be in the same order as in the target sizes file.
 
 **Example output**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true" width="300"/>
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true" width="300"/>
 
 ---
 
@@ -208,7 +208,7 @@ There are optional parameters for some customization of this function:
 
 **Example output**
 
-<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true" width="600"/>
+<img src="https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true" width="600"/>
 
 ---
 
