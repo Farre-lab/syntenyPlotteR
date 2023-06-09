@@ -14,7 +14,7 @@
 #'
 #' 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
 #'
-#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 #'
 #' Example: reformat.syntenyData("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
 #'
@@ -94,7 +94,7 @@ reformat.syntenyData <- function(file_data,filename,reference.species = referenc
 #'
 #' The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
 #'
-#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 #'
 #' Example: draw.eh("outputName",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 #'
@@ -241,7 +241,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #'
 #' The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms
 #'
-#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 #'
 #' Example: draw.linear("outputname","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 #'
@@ -445,7 +445,7 @@ draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours
 #' Chromosomes will be in the same order as in the target chromosomes in the chromosome length file
 #'
 #'
-#' The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+#' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 #'
 #' Example: draw.ideogram("example_alignment_1.txt","example_lengths.txt","outputname",fileformat = "pdf")
 #'
