@@ -71,7 +71,7 @@ Please provide a file containing all aligned species in order from newest specie
 
 ### Example file format
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true){:height="36px" width="36px"} 
+![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true) 
 
 
 ## Reformatting alignment data
