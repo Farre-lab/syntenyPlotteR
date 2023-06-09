@@ -37,7 +37,7 @@ This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Qui
 
 ## To install:
 ```r
-devtools::install_github("marta-fb/syntenyPlotteR")
+devtools::install_github("Farre-lab/syntenyPlotteR")
 ```
 
 ## Package Requirements
@@ -75,7 +75,7 @@ If chromosome alignment was performed using inferCARs please input the inferCARs
 
 ### Example file format
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
 
 
 ### Alignment file input format for draw.eh, draw.ideogram, and draw.linear functions
@@ -96,7 +96,7 @@ Please provide a file for the alignment synteny blocks following this format, se
 
 ### Example file format
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
 
 
 ### Chromosome Length file for draw.ideogram and draw.linear functions
@@ -111,7 +111,7 @@ Please provide a file containing all aligned species in order from newest specie
 
 ### Example file format
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true)  
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true)  
 
 
 ## Reformatting alignment data
@@ -177,7 +177,7 @@ draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","
 
 ### Example output:  
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true)  
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true)  
 
 
 ## inferCARs style
@@ -216,7 +216,7 @@ draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram"
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
 
 
 ## Linear style
@@ -253,7 +253,7 @@ draw.linear("example_linear","example_lengths.txt","example_alignment_1.txt","ex
 
 ### Example output:
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true)
+![alt text](https://github.com/Farre-lab/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true)
 
 
 ## To come soon:
