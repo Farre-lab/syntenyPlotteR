@@ -18,5 +18,5 @@ Imports:
     stringr,
     utils
 NeedsCompilation: no
-BugReports: https://github.com/marta-fb/syntenyPlotteR/issues
-URL: https://github.com/marta-fb/syntenyPlotteR
+BugReports: https://github.com/Farre-lab/syntenyPlotteR/issues
+URL: https://github.com/Farre-lab/syntenyPlotteR
