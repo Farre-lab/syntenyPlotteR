@@ -3,10 +3,19 @@ R package to draw synteny plots in three different styles
 
 This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Quigley (slq4@kent.ac.uk), and Marta Farré (m.farre-belmonte@kent.ac.uk)
 
+## Table of contents
+
+1. [To install](https://github.com/Farre-lab/syntenyPlotteR#to-install)
+2. [Input files](https://github.com/Farre-lab/syntenyPlotteR#Input-files)
+3. [Reformatting alignment data](https://github.com/Farre-lab/syntenyPlotteR#reformatting-alignment-data)
+5. [Evolution Highway style](https://github.com/Farre-lab/syntenyPlotteR#evolution-highway-style)
+6. [Chromosome painting style](https://github.com/Farre-lab/syntenyPlotteR#chromosome-painting-style)
+7. [Linear style](https://github.com/Farre-lab/syntenyPlotteR#linear-style)
+
 ## To install:
 `devtools::install_github("marta-fb/syntenyPlotteR")`
 
-## Package Requirements
+### Package Requirements
 This package requires the package ggplot2 to be able to run this must be installed and loaded in the R environment
 
 This can be done by:
@@ -25,22 +34,18 @@ The reformat.syntenyData function also requires the stringR package included in 
 `install.packages("stringr")`
 `library(stringr)`
 
+---
 ## Input files 
 
-### Alignment output file format for reformat.syntenyData function
+### Input Alignment file
 
-If chromosome alignment was performed using DESCHRAMBLER please input the .map file 
-If chromosome alignment was performed using inferCARs please input the inferCARs output file 
+We provide a funtion to modify the output of DESCHRAMBLER or any other synteny tool that creates this type of file:
 
+**Alignment output file format for reformat.syntenyData function**
 
-### Example file format
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true" width="300" />
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.deshrambler.output.png?raw=true)  
-
-
-### Alignment file input format for draw.eh, draw.ideogram, and draw.linear functions
-
-Please provide a file for the alignment synteny blocks following this format, separated by tabs
+**Otherwise, you can provide your input Alignment file separated by tabs**
 
   DO NOT include a header line
 
@@ -54,9 +59,9 @@ Please provide a file for the alignment synteny blocks following this format, se
 * Reference species ID
 * Target species ID
 
-### Example file format
+**Example input alignment file format for the three functions**
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true)  
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.alignment.input.png?raw=true" width="400"/>
 
 
 ### Chromosome Length file for draw.ideogram and draw.linear functions
@@ -69,10 +74,11 @@ Please provide a file containing all aligned species in order from newest specie
 * Chromosome length
 * Species ID
 
-### Example file format
+**Example file format**
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true) 
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.lengths.input.png?raw=true" width="300"/>
 
+---
 
 ## Reformatting alignment data
 
@@ -95,11 +101,11 @@ There are optional parameters for some customization of this function:
 * reference.species - reference species ID as character string for final output table 
 * target.species - target species ID as character string for final output table 
 
-### Example code using data files in data folder
+**Example code using data files in data folder**
 
 `reformat.syntenyData("example_map_1.map","reformatted.data")`
 
-
+---
 ## Evolution Highway style
 
 
@@ -124,16 +130,17 @@ There are optional parameters for some customization of this function:
 * ps - The point size of the image created can be changed by using: ps = 10
 
  
-### Example code using data files in data folder
+**Example code using data files in data folder**
 
 `draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
 
-### Example output:  
+**Example output**
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true)  
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.eh.png?raw=true" width="300"/>
 
+---
 
-## inferCARs style
+## Chromosome painting style
 
 
 ### Usage
@@ -158,15 +165,16 @@ Target is the species which chromosomes will be painted. Reference will be used 
 Chromosomes will be in the same order as in the target sizes file. 
 
 
-### Example code using data files in data folder
+**Example code using data files in data folder**
 
 `draw.ideogram("example_alignment_1.txt","example_lengths.txt","example.ideogram")`
 
 
-### Example output:
+**Example output**
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true)
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example.ideogram.png?raw=true" width="300"/>
 
+---
 
 ## Linear style
 
@@ -191,20 +199,18 @@ There are optional parameters for some customization of this function:
 * h -  The height of the image created can be changed by using: h = 10
 
 
-### Example code using data files in data folder
+**Example code using data files in data folder**
 
 `draw.linear("example_linear","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
 
 
-### Example output:
+**Example output**
 
-![alt text](https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true)
+<img src="https://github.com/marta-fb/syntenyPlotteR/blob/master/vignettes/images/example_linear.png?raw=true" width="600"/>
+
+---
 
 
-## To come soon:
-
-1. Update vignette
-2. Preprint in Biorxiv
 
 ### Citation:
 While we're preparing the publication, please cite:  
