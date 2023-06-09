@@ -3,6 +3,8 @@ R package to draw synteny plots in three different styles
 
 This package has been developed by Joana Damas (joanadamas@gmail.com), Sarah Quigley (slq4@kent.ac.uk), and Marta Farré (m.farre-belmonte@kent.ac.uk)
 
+It has been tested in Windows 10 R v4.0.3, Windows 11 with R v4.1.1 and v4.2.2 and MAC OS Ventura 13.1
+
 ## Table of contents
 
 1. [To install](https://github.com/Farre-lab/syntenyPlotteR#to-install)
