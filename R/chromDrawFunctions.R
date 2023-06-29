@@ -130,6 +130,8 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
     outfile<-chr<-start<-end<-tarChr<-tarSt<-tarEnd<-orient<-tar<-text_size2<-NULL
     data<-read.table(file, header=FALSE)
     colnames(data) = c("chr","start","end","tarChr","tarSt","tarEnd","orient","ref","tar")
+    data$tar <- as.factor(data$tar)
+    data$ref <- as.factor(data$ref)
     data$start <- as.numeric(gsub(",","",data$start))
     data$end <- as.numeric(gsub(",","",data$end))
     data$tarSt <- as.numeric(gsub(",","",data$tarSt))
@@ -138,7 +140,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
     data$orient[data$orient == "-"] <- "-1"
     data$orient = factor(data$orient, levels=c("1","-1"))
     data$text_size2=80*((data$end-data$start)/100000)
-    alignments <- rbind(data,alignments) }
+    alignments <- rbind(alignments,data) }
 
   plots <- ggplot2::ggplot()
   for (ID in c(chrRange)) {
