@@ -241,6 +241,8 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #'
 #' 4. The height of the image created can be changed by inputting: h = 10
 #'
+#' 5. the opacity of the ribbons can be changes using inputting: opacity = .5
+#'
 #' The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms
 #'
 #' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
@@ -258,7 +260,7 @@ draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",in
 #' @return A file with comparative drawings
 #' @export
 #'
-draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5){
+draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5,opacity = .5){
   #The below function converts coordinates to linear genome and creates synteny polygon coordinates
   synteny.data.reframing <- function(data,tar.y,ref.y,compiled.size){
     synteny <- data.frame()
@@ -389,7 +391,7 @@ draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours
                          color="black", alpha = 0.85, size = 0.2 ) +
       ggplot2::geom_text(data=tar_sizes,ggplot2::aes(x=(xstart+xend)/2,y=y+0.2,label=chromosome),size=2,angle=45) +
       ggplot2::geom_text(data=tar_sizes,mapping=ggplot2::aes(x=2,y=y, label=species),size=3,hjust = 1) +
-      ggplot2::geom_polygon(data = data, alpha = .5, ggplot2::aes(x = x, y = y, group = group, fill = fill))
+      ggplot2::geom_polygon(data = data, alpha = opacity, ggplot2::aes(x = x, y = y, group = group, fill = fill))
   }
 
 

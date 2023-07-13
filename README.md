@@ -184,7 +184,7 @@ Chromosomes will be in the same order as in the target sizes file.
 
 `library(syntenyPlotteR)`
 
-`draw.linear(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5)`
+`draw.linear(output,sizefile,...,fileformat = "png",colours = colours.default,w=13,h=5,opacity = .5)`
 
 * output - string assigned to the output file name 
 * sizefile - tab separated file of all chromosome, scaffold, or contig lengths and the species identifier (in order from newest species – top of file – to ancestor – end of file)
@@ -199,6 +199,7 @@ There are optional parameters for some customization of this function:
 * colours - colours to assign to the bands between ideograms in a concatenated string of chromosome IDs with assigned colour values which can be found with R colour Pallette, paramter use: colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey") if no colours are assigned default values will be used but colours MUST be assigned to all chromosomes
 * w -  The width of the image created can be changed by using: w = 5.5
 * h -  The height of the image created can be changed by using: h = 10
+* opacity - the opacity of the ribbons can be changes using inputting: opacity = .5
 
 
 **Example code using data files in data folder**

@@ -11,7 +11,8 @@ draw.linear(
   fileformat = "png",
   colours = colours.default,
   w = 13,
-  h = 5
+  h = 5,
+  opacity = 0.5
 )
 }
 \arguments{
@@ -63,9 +64,11 @@ e.g. colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = 
 
 4. The height of the image created can be changed by inputting: h = 10
 
+5. the opacity of the ribbons can be changes using inputting: opacity = .5
+
 The function works using the chromosome length file to order the Y axis and provide chromosome lengths to draw chromosome ideograms and the alignment files provides coordinates to draw the alignment bands between ideograms
 
-The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 
 Example: draw.linear("outputname","example_lengths.txt","example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 }

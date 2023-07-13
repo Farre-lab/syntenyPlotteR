@@ -73,7 +73,7 @@ Target is the species which chromosomes will be painted. Reference will be used 
 Chromosomes will be in the same order as in the target chromosomes in the chromosome length file
 
 
-The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 
 Example: draw.ideogram("example_alignment_1.txt","example_lengths.txt","outputname",fileformat = "pdf")
 

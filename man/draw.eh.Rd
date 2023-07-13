@@ -75,7 +75,7 @@ There are optional parameters for some customization of this function:
 
 The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
 
-The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 
 Example: draw.eh("outputName",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
 }

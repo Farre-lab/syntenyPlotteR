@@ -41,7 +41,7 @@ There are optional parameters for some customization of this function:
 
 2. target.species allows you to set the target species identifier that will be set in the final output table i.e. target.species = "tar"
 
-The following example can be recreated with the example data files found in (https://github.com/marta-fb/syntenyPlotteR/blob/master/data)
+The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 
 Example: reformat.syntenyData("deschrambler.output","reformatted.data",reference.species ="ref", target.species = "tar" )
 }
