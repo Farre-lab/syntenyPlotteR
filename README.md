@@ -13,6 +13,7 @@ It has been tested in Windows 10 R v4.0.3, Windows 11 with R v4.1.1 and v4.2.2 a
 5. [Evolution Highway style](https://github.com/Farre-lab/syntenyPlotteR#evolution-highway-style)
 6. [Chromosome painting style](https://github.com/Farre-lab/syntenyPlotteR#chromosome-painting-style)
 7. [Linear style](https://github.com/Farre-lab/syntenyPlotteR#linear-style)
+8. [How to cite](https://github.com/Farre-lab/syntenyPlotteR#citation)
 
 ## To install:
 `devtools::install_github("Farre-lab/syntenyPlotteR")`
