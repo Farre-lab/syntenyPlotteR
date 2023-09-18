@@ -68,11 +68,12 @@ reformat.syntenyData <- function(file_data,filename,reference.species = referenc
 #'
 #' It requires as input:
 #'
-#' 1. output file name
+#' 1. Desired output file name
 #'
-#' 2. the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
+#' 2. The range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22
+#'  note: if you are inputting sex chromosomes or chromosomes with characters in the name input a concatenated string i.e. c(1,2,3,"X")
 #'
-#' 3. files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file) following this format:
+#' 3. File containing the syntenic blocks of alignments of one or more target species aligned to a single reference; following this format:
 #' reference chromosome, reference start position, reference end position, target chromosome,
 #' target start position, target end position, orient, reference species identifier, target species identifier
 #'
@@ -84,26 +85,25 @@ reformat.syntenyData <- function(file_data,filename,reference.species = referenc
 #'
 #' 3. The colour of the inverted syntenic blocks can be changed by inputting: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
 #'
-#' 4. The numeric range cannot accept the letter values for the sex chromosomes, thus if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
-#'
 #' 5. The width of the image created can be changed by inputting: w = 5.5
 #'
 #' 6. The height of the image created can be changed by inputting: h = 10
 #'
 #' 7. The point size of the image created can be changed by inputting: ps = 10
 #'
-#' The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference and the target chromosome positions are used to colour the region where synteny was identified
+#' The function works creating a graph for each reference chromosome using their start and end positions to create a block for the reference
+#' and the target chromosome positions are used to colour the region where synteny was identified
 #'
 #' The following example can be recreated with the example data files found in (https://github.com/Farre-lab/syntenyPlotteR/blob/master/data)
 #'
-#' Example: draw.eh("outputName",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt",fileformat = "pdf")
+#' Example: draw.eh("outputName",c(17,"X"), "example_eh_alignments_2.txt" ,fileformat = "pdf")
+#'
 #'
 #' @title Evolution Highway style plot
 #' @param output output file name
 #' @param chrRange range of chromosome numbers in the reference as numbers i.e. 1:29
-#' @param ... files containing the syntentic blocks from the alignment
+#' @param data_file file containing the syntentic blocks from the alignments
 #' @param fileformat output file format desired input as fileformat = "png" (default is "png")
-#' @param sex.chromosome character value for sex chromosomes input as sex.chromosome = "X" or c("X","Y") (default is "X")
 #' @param colour set colour for non-inverted syntenic blocks input as colour = "red" (default is "lightblue")
 #' @param inverted.colour set colour for inverted syntenic blocks input as inverted.colour = "blue" (default is "lightpink")
 #' @param w width of output image
@@ -112,105 +112,72 @@ reformat.syntenyData <- function(file_data,filename,reference.species = referenc
 #' @return An image with the comparative drawings
 #' @export
 #'
+#'
 
-draw.eh<-function(output,chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X",w=5.5,h=10,ps=10) {
+draw.eh <- function(output,
+                    chrRange,
+                    data_file,
+                    fileformat = "png",
+                    colour = "lightblue",
+                    inverted.colour = "lightpink",
+                    w = 5.5,
+                    h = 10,
+                    ps = 10) {
 
-  colours = c("1" = colour, "-1" = inverted.colour)
+  colours <- c("1" = colour, "-1" = inverted.colour)
 
-  list.of.files <-  list()
-  for(i in list(...)){
-    list.of.files[[i]] <- i
-  }
+    outfile <- chr <- start <- end <- tarChr <- tarSt <- tarEnd <- orient <- tar <- text_size2 <- NULL
+    alignments <- utils::read.table(data_file, header = FALSE)
+    colnames(alignments) <- c("chr", "start", "end", "tarChr", "tarSt", "tarEnd", "orient", "ref", "tar")
+    alignments$tar <- as.factor(alignments$tar)
+    alignments$ref <- as.factor(alignments$ref)
+    alignments$start <- as.numeric(gsub(",", "", alignments$start))
+    alignments$end <- as.numeric(gsub(",", "", alignments$end))
+    alignments$tarSt <- as.numeric(gsub(",", "", alignments$tarSt))
+    alignments$tarEnd <- as.numeric(gsub(",", "", alignments$tarEnd))
+    alignments$orient[alignments$orient == "+"] <- "1"
+    alignments$orient[alignments$orient == "-"] <- "-1"
+    alignments$orient <- factor(alignments$orient, levels = c("1", "-1"))
+    alignments$text_size2 <- 80 * ((alignments$end - alignments$start) / 100000)
 
-  #for each file in the list of synteny files prepare the polygon coordinates
-  alignments <- data.frame()
-  for(i in 1:length(list.of.files)){
-    num <- i
-    file <- list.of.files[[num]]
-    outfile<-chr<-start<-end<-tarChr<-tarSt<-tarEnd<-orient<-tar<-text_size2<-NULL
-    data<-read.table(file, header=FALSE)
-    colnames(data) = c("chr","start","end","tarChr","tarSt","tarEnd","orient","ref","tar")
-    data$tar <- as.factor(data$tar)
-    data$ref <- as.factor(data$ref)
-    data$start <- as.numeric(gsub(",","",data$start))
-    data$end <- as.numeric(gsub(",","",data$end))
-    data$tarSt <- as.numeric(gsub(",","",data$tarSt))
-    data$tarEnd <- as.numeric(gsub(",","",data$tarEnd))
-    data$orient[data$orient == "+"] <- "1"
-    data$orient[data$orient == "-"] <- "-1"
-    data$orient = factor(data$orient, levels=c("1","-1"))
-    data$text_size2=80*((data$end-data$start)/100000)
-    alignments <- rbind(alignments,data) }
 
   plots <- ggplot2::ggplot()
   for (ID in c(chrRange)) {
-    #ID=chrRange
     print(ID)
-    subsetChr1<-subset(alignments,chr==ID, select=c(chr,start,end,tarChr,tarSt,tarEnd,orient,tar,text_size2))
-    min=min(subsetChr1$start)
-    max=max(subsetChr1$end)
+    subsetChr1 <- subset(alignments, chr == ID, select = c(chr, start, end, tarChr, tarSt, tarEnd, orient, tar, text_size2))
+    min <- min(subsetChr1$start)
+    max <- max(subsetChr1$end)
     plots <- ggplot2::ggplot() +
-      ggplot2::geom_rect(data=subsetChr1, mapping=ggplot2::aes(xmin=start, xmax=end, ymin=0, ymax=0.5, fill=orient, group=tar), color="white",
-                         alpha = 1, size = 0.1 ) +
-      ggplot2::geom_rect(data=subsetChr1, ggplot2::aes(xmin=min,xmax=max,ymin=0,ymax=0.5), size=0.3, color="black", fill="NA") +
-      ggplot2::facet_grid(~ tar) +
+      ggplot2::geom_rect(
+        data = subsetChr1, mapping = ggplot2::aes(
+          xmin = start, xmax = end, ymin = 0,
+          ymax = 0.5, fill = orient, group = tar
+        ),
+        color = "white", alpha = 1, linewidth = 0.1
+      ) +
+      ggplot2::geom_rect(data = subsetChr1, ggplot2::aes(xmin = min, xmax = max, ymin = 0, ymax = 0.5), linewidth = 0.3, color = "black", fill = "NA") +
+      ggplot2::facet_grid(~tar) +
       ggplot2::coord_flip() +
       ggplot2::scale_x_reverse() +
-      ggplot2::scale_y_discrete(expand=c(0,0)) +
+      ggplot2::scale_y_discrete(expand = c(0, 0)) +
       ggplot2::theme(
-        panel.spacing.y = ggplot2::unit(c(-0.5,-0.5), "lines"),
-        panel.spacing.x = ggplot2::unit(0,"lines"),
+        panel.spacing.y = ggplot2::unit(c(-0.5, -0.5), "lines"),
+        panel.spacing.x = ggplot2::unit(0, "lines"),
         panel.background = ggplot2::element_blank(),
         strip.background = ggplot2::element_blank(),
         axis.title.y = ggplot2::element_blank(),
         axis.title.x = ggplot2::element_blank(),
         axis.text.x = ggplot2::element_blank(),
-        legend.position="none"
+        legend.position = "none"
       ) +
       ggplot2::scale_fill_manual(values = colours) +
-      ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
+      ggplot2::geom_text(data = subsetChr1, ggplot2::aes(x = start + (end - start) / 2, y = 0 + (0.5 - 0) / 2, label = tarChr, size = text_size2))
 
 
-    ggplot2::ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
-
-  }
-
-
-  plots <- ggplot2::ggplot()
-  for (ID in c(sex.chromosome)) {
-    #ID=sex.chromosome
-    print(ID)
-    subsetChr1<-subset(alignments,chr==ID, select=c(chr,start,end,tarChr,tarSt,tarEnd,orient,tar,text_size2))
-    min=min(subsetChr1$start)
-    max=max(subsetChr1$end)
-    plots <- ggplot2::ggplot() +
-      ggplot2::geom_rect(data=subsetChr1, mapping=ggplot2::aes(xmin=start, xmax=end, ymin=0, ymax=0.5, fill=orient, group=tar), color="white",
-                         alpha = 1, size = 0.1 ) +
-      ggplot2::geom_rect(data=subsetChr1, ggplot2::aes(xmin=min,xmax=max,ymin=0,ymax=0.5), size=0.3, color="black", fill="NA") +
-      ggplot2::facet_grid(~ tar) +
-      ggplot2::coord_flip() +
-      ggplot2::scale_x_reverse() +
-      ggplot2::scale_y_discrete(expand=c(0,0)) +
-      ggplot2::theme(
-        panel.spacing.y = ggplot2::unit(c(-0.5,-0.5), "lines"),
-        panel.spacing.x = ggplot2::unit(0,"lines"),
-        panel.background = ggplot2::element_blank(),
-        strip.background = ggplot2::element_blank(),
-        axis.title.y = ggplot2::element_blank(),
-        axis.title.x = ggplot2::element_blank(),
-        axis.text.x = ggplot2::element_blank(),
-        legend.position="none"
-      ) +
-      ggplot2::scale_fill_manual(values = colours) +
-      ggplot2::geom_text(data=subsetChr1,ggplot2::aes(x=start+(end-start)/2,y=0+(0.5-0)/2,label=tarChr,size=text_size2))
-
-
-    ggplot2::ggsave(paste0(output,".",ID,".",fileformat),plots,device = fileformat,width=w, height =h, pointsize = ps)
-
+    ggplot2::ggsave(paste0(output, ".", ID, ".", fileformat), plots, device = fileformat, width = w, height = h, pointsize = ps)
   }
 
 }
-
 
 #' Draw Linear Synteny Plots
 #'

@@ -113,21 +113,21 @@ There are optional parameters for some customization of this function:
 
 
 ### Usage
+
 `library(syntenyPlotteR)`
 
-`draw.eh("output",chrRange,...,fileformat = "png",colour = "lightblue",inverted.colour = "lightpink", sex.chromosome ="X",w=5.5,h=10,ps=10)`
+`draw.eh("output",chrRange, "data_file", fileformat = "png", colour = "lightblue", inverted.colour = "lightpink", w = 5.5, h = 10, ps = 10)`
 
 
 * output - string assigned to name of output file name
-* chrRange - the numeric range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22 
-* ... - list of files containing the syntenic blocks (one file per alignment, in order from most recent species alignment file to ancestor alignment file)
+* chrRange - The range of chromosomes of the reference species this is entered as either a single number i.e. 1 or a range of numbers i.e. 1:22. *Note: if you are inputting sex chromosomes or chromosomes with characters in the name input a concatenated string i.e. c(1,2,3,"X")*
+* data_file - File containing the syntenic blocks of alignments of one or more target species aligned to a single reference
 
 There are optional parameters for some customization of this function:
 
 * fileformat - format for saving the image i.e. png or pdf, parameter use: fileformat = "pdf" (the default value is "png")
 * colour - colour of the syntenic blocks (not inverted blocks), parameter use: colour = "red" (the default value is "lightblue", see Rcolour pallette for colour options)
-* colour - colour of the inverted syntenic blocks, parameter use: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
-* sex.chromosomes - The numeric range cannot accept characters, if sex chromosomes are required they can be added using: sex.chromosome ="X" or  sex.chromosome =c("X","Y") (the default value is "X")
+* inverted.colour - colour of the inverted syntenic blocks, parameter use: inverted.colour = "blue" (the default value is "lightpink", see Rcolour pallette for colour options)
 * w -  The width of the image created can be changed by using: w = 5.5
 * h -  The height of the image created can be changed by using: h = 10
 * ps - The point size of the image created can be changed by using: ps = 10
@@ -135,7 +135,7 @@ There are optional parameters for some customization of this function:
  
 **Example code using data files in data folder**
 
-`draw.eh("example.eh",1:22, "example_alignment_1.txt","example_alignment_2.txt","example_alignment_3.txt")`
+`draw.eh("outputName",c(17,"X"), "example_eh_alignments_2.txt" ,fileformat = "pdf")`
 
 **Example output**
 
