@@ -421,7 +421,6 @@ draw.linear <- function(output,sizefile,...,fileformat = "png",colours = colours
 #' Example: draw.ideogram("example_alignment_1.txt","example_lengths.txt","outputname",fileformat = "pdf")
 #'
 #'
-#' Example: draw.ideogram(synteny_file, target_chr_size, reference_chr_size)
 #' @title Draw ideograms in inferCARs style
 #' @param file_data Path to the syntenic blocks file
 #' @param sizefile Chromosome size file
