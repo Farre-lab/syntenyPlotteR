@@ -1,0 +1,11 @@
+bibentry(
+  bibtype = "Article",
+  header = "To cite syntenyPlotteR in publications, please use",
+  author = "Sarah Quigley, Joana Damas, Denis M. Larkin, Marta Farré",
+  title = "syntenyPlotteR: a user-friendly R package to visualize genome synteny, ideal for both experienced and novice bioinformaticians",
+  year = 2023,
+  journal = "under review",
+  volume = "under review",
+  number = "under review",
+  pages = "under review",
+)
