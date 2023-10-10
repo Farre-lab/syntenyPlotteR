@@ -29,3 +29,4 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 License: MIT + file LICENSE
+URL: https://farre-lab.github.io/syntenyPlotteR/
