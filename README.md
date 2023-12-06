@@ -283,7 +283,4 @@ draw.linear("example_linear", "example_lengths.txt", "example_alignment_1.txt", 
 
 ### Citation:
 
-While our publication is under review, please cite:  
-Farré M, Kim J, et al. Evolution of gene regulation in ruminants differs
-between evolutionary breakpoint regions and homologous synteny blocks.
-Genome Research 2019 Apr;29(4):576-589
+Sarah Quigley, Joana Damas, Denis M Larkin, Marta Farré, syntenyPlotteR: a user-friendly R package to visualize genome synteny, ideal for both experienced and novice bioinformaticians, Bioinformatics Advances, Volume 3, Issue 1, 2023, vbad161, https://doi.org/10.1093/bioadv/vbad161
