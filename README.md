@@ -273,7 +273,7 @@ Optimisation for `draw.linear` from the original syntenyPlotteR package (https:/
 ``` r
 library(syntenyPlotteR.beta)
 
-draw.linear.2.0(output, sizefile, ..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5, insert.size = 6000000, chr.label.size = 4, sps.label.size = 7, angle.chr.label = 45, chr.label.height = 0.6)
+draw.linear.2.0(output, sizefile, ..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5, insert.size = 6000000, chr.label.size = 2, sps.label.size = 3, angle.chr.label = 45, chr.label.height = 0.1)
 ```
 
 - output - string assigned to the output file name
@@ -317,7 +317,7 @@ There are optional parameters for some customization of this function:
 **Example code using data files in *inst/extdata/***
 
 ``` r
-`draw.linear.2.0(output,sizefile,..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5,insert.size = 6000000,chr.label.size = 4, sps.label.size = 7, angle.chr.label = 45, chr.label.height = 0.6)`
+`draw.linear.2.0(output,sizefile,..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5,insert.size = 6000000,chr.label.size = 2, sps.label.size = 3, angle.chr.label = 45, chr.label.height = 0.2)`
 ```
 
 **Example output**
