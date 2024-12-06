@@ -38,7 +38,7 @@ DO NOT include a header line
 
 **Example input alignment file format for the functions**
 
-<img src="vignettes/images/example.alignment.input.png" width="521" />
+<img src="man/figures/example.alignment.input.png" width="521" />
 
 ### Chromosome Length file
 
@@ -58,7 +58,7 @@ add a final column with centromere position to add annotation of centromere
 
 **Example file format**
 
-## <img src="vignettes/images/example.lengths.input.png" width="263" />
+ <img src="man/figures/example.lengths.input.png" width="263" />
 
 
 
@@ -260,7 +260,7 @@ There are optional parameters for some customization of this function:
 
 **Example output**
 
-<img src="vignettes/images/example_linear.png" width="519" />
+<img src="man/figures/microsynteny.png" width="519" />
 
 ------------------------------------------------------------------------
 
@@ -322,7 +322,11 @@ There are optional parameters for some customization of this function:
 
 **Example output**
 
-<img src="vignettes/images/example_linear.png" width="519" />
+<img src="man/figures/drawlinear.png" width="519" />
+
+**Example output with centromere highlighted**
+
+<img src="man/figures/drawlinear.centromere.png" width="519" />
 
 --------------------------------------------------------------------------
 
