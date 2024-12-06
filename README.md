@@ -1,30 +1,18 @@
+# syntenyPlotteR.beta
 
-# syntenyPlotteR
+Updates to syntenyplotteR package - IN ACTIVE DEVELOPMENT
 
-R package to draw synteny plots in three different styles
+WARNING! These functions are in active development and might contain bugs
 
-This package has been developed by Joana Damas (<joanadamas@gmail.com>),
-Sarah Quigley (<slq4@kent.ac.uk>), Denis Larkin (<dlarkin@rvc.ac.uk>)
-and Marta Farré (<m.farre-belmonte@kent.ac.uk>)
-
-It has been tested in Windows 10 R v4.0.3, Windows 11 with R v4.1.1 and
-v4.2.2 and MAC OS Ventura 13.1
 
 ## To install:
-
-### Using CRAN
-
-``` r
-install.packages("syntenyPlotteR")
-library(syntenyPlotteR)
-```
 
 ### Using github
 
 ``` r
 install.packages("devtools")
 library(devtools)
-devtools::install_github("Farre-lab/syntenyPlotteR")
+devtools::install_github("Farre-lab/syntenyPlotteR@beta")
 library(syntenyPlotteR)
 ```
 
@@ -34,16 +22,7 @@ library(syntenyPlotteR)
 
 ### Input Alignment file
 
-We provide a function to modify the output of DESCHRAMBLER or any other
-synteny tool that creates this type of file:
-
-**Alignment output file format for reformat.syntenyData function**
-
-<img src="vignettes/images/example.deshrambler.output.png"
-width="333" />
-
-**Otherwise, you can provide your input Alignment file separated by
-tabs**
+**input Alignment file separated by tabs**
 
 DO NOT include a header line
 
@@ -57,11 +36,11 @@ DO NOT include a header line
 - Reference species ID
 - Target species ID
 
-**Example input alignment file format for the three functions**
+**Example input alignment file format for the functions**
 
 <img src="vignettes/images/example.alignment.input.png" width="521" />
 
-### Chromosome Length file for draw.ideogram and draw.linear functions
+### Chromosome Length file
 
 Please provide a file containing all aligned species in order from
 newest species – top of file – to ancestor – end of file, following this
@@ -73,22 +52,24 @@ DO NOT include a header line
 - Chromosome length
 - Species ID
 
+OPTIONAL: 
+
+add a final column with centromere position to add annotation of centromere
+
 **Example file format**
 
 ## <img src="vignettes/images/example.lengths.input.png" width="263" />
 
+
+
 ------------------------------------------------------------------------
 
-## Reformatting alignment data
+## Linear microsynentic alignment style
 
-The syntenyPlotteR package includes a function to reformat alignment
-synteny data such as from DESCHRAMBLER or inferCARs - this does not
-curate files only reformats it
+Recommended for syntenic blocks <30Kbp 
 
-The function outputs a text file containing the reformatted alignment
-data As default the function saves the file to a temporary directory,
-this can be overridden using the `directory` parameter
-i.e. `directory = "path/to/directory"`.
+The `draw.microsynteny` plot works similarly to `draw.linear` in the original syntenyPlotteR package (https://github.com/Farre-lab/syntenyPlotteR)
+>>>>>>> 378b3cb (Initial commit)
 
 ### Usage
 
@@ -231,7 +212,7 @@ draw.ideogram("example_alignment_1.txt", "example_lengths.txt", "example.ideogra
 ``` r
 library(syntenyPlotteR)
 
-draw.linear(output, sizefile, ..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5)
+draw.microsynteny(output,sizefile,...,fileformat = "png",colours = c("red","blue"),w=13,h=5,opacity = .1,curve=.75,thickness=.5)
 ```
 
 - output - string assigned to the output file name
@@ -268,11 +249,13 @@ There are optional parameters for some customization of this function:
 - directory - directory where to save image file
   i.e. `directory = "path/to/directory"` (default is save to temporary
   directory)
+- curve - curvature of syntenic line `curve = .75` (default)
+- thickness - thickness of drawn lines `thickness = .5` (default)
 
 **Example code using data files in *inst/extdata/***
 
 ``` r
-draw.linear("example_linear", "example_lengths.txt", "example_alignment_1.txt", "example_alignment_2.txt", "example_alignment_3.txt")
+`draw.microsynteny("outputname","test_lengths.txt","test_alignment_1.txt",fileformat = "png",colours = c("red","blue"),w=13,h=5,opacity = .1,curve=.75,thickness=.5)`
 ```
 
 **Example output**
@@ -281,9 +264,68 @@ draw.linear("example_linear", "example_lengths.txt", "example_alignment_1.txt", 
 
 ------------------------------------------------------------------------
 
+## Linear synteny alignment style 2.0
+
+Optimisation for `draw.linear` from the original syntenyPlotteR package (https://github.com/Farre-lab/syntenyPlotteR)
+
+### Usage
+
+``` r
+library(syntenyPlotteR.beta)
+
+draw.linear.2.0(output, sizefile, ..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5, insert.size = 6000000, chr.label.size = 4, sps.label.size = 7, angle.chr.label = 45, chr.label.height = 0.6)
+```
+
+- output - string assigned to the output file name
+- sizefile - tab separated file of all chromosome, scaffold, or contig
+  lengths and the species identifier, in order from first target species
+  in the alignment files followed by the first reference species in the
+  alignment files – top of file – to the last target species and
+  reference species in the alignment files – end of file.
+- … - files containing the syntenic blocks (one file per alignment, in
+  order from first target/reference (most recent species pairwise
+  alignment in ancestral reconstruction data) alignment file to last
+  target/reference (ancestor pairwise alignment in ancestral
+  reconstruction data) alignment file)
+
+Please ensure any species identifiers used between length and alignment
+files are matching (same identifiers and letter case)
+
+There are optional parameters for some customization of this function:
+
+- fileformat - format for saving the image i.e. png or pdf, parameter
+  use: `fileformat = "pdf"` (the default value is “png”)
+- colours - colours to assign to the bands between ideograms in a
+  concatenated string of chromosome IDs with assigned colour values
+  which can be found with R colour Pallette, paramter use:
+  `colours = c("1" = "red", "2" = "blue", "3" = "green","4" = "orange", "5" = "purple","X" = "grey")`
+  if no colours are assigned default values will be used but colours
+  MUST be assigned to all chromosomes
+- w - The width of the image created can be changed by using: `w = 5.5`
+  (default)
+- h - The height of the image created can be changed by using: `h = 10`
+  (default)
+- opacity - the opacity of the ribbons can be changes using inputting:
+  `opacity = .5` (default)
+- insert.size - alter the size of the gaps between the chromosomes to allow for more proportional sizes if working with larger or smaller genomes than generally expected `insert_size = 6000000` (default)
+- chr.label.size - sizes for the chromosome ID label `chr.label.size = 2` (default)
+- sps.label.size - sizes for the species label `sps.label.size = 2` (default)
+- angle.chr.label - angle for the chromosome label `angle.chr.label = 45` (default)
+- chr.label.height - height of chromosome ID label above chromosome drawing `chr.label.height = 0.2` (default)
+
+
+**Example code using data files in *inst/extdata/***
+
+``` r
+`draw.linear.2.0(output,sizefile,..., fileformat = "png", colours = colours.default, w=13, h=5, opacity = .5,insert.size = 6000000,chr.label.size = 4, sps.label.size = 7, angle.chr.label = 45, chr.label.height = 0.6)`
+```
+
+**Example output**
+
+<img src="vignettes/images/example_linear.png" width="519" />
+
+--------------------------------------------------------------------------
+
 ### Citation:
 
-While our publication is under review, please cite:  
-Farré M, Kim J, et al. Evolution of gene regulation in ruminants differs
-between evolutionary breakpoint regions and homologous synteny blocks.
-Genome Research 2019 Apr;29(4):576-589
+Sarah Quigley, Joana Damas, Denis M Larkin, Marta Farré, syntenyPlotteR: a user-friendly R package to visualize genome synteny, ideal for both experienced and novice bioinformaticians, Bioinformatics Advances, Volume 3, Issue 1, 2023, vbad161, https://doi.org/10.1093/bioadv/vbad161
