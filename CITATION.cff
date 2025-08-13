@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use syntenyPlotteR, please cite it as below."
+preferred-citation:
+  type: article
+  title: "syntenyPlotteR: a user-friendly R package to visualize genome synteny, ideal for both experienced and novice bioinformaticians"
+  authors:
+    - family-names: "Quigley"
+      given-names: "Sarah"
+    - family-names: "Damas"
+      given-names: "Joana"
+    - family-names: "Larkin"
+      given-names: "Denis M."
+    - family-names: "Farré"
+      given-names: "Marta"
+  journal: "Bioinformatics Advances"
+  volume: "3"
+  issue: "1"
+  start: "vbad161"
+  year: 2023
+  doi: "10.1093/bioadv/vbad161"
+  url: "https://doi.org/10.1093/bioadv/vbad161"
+
