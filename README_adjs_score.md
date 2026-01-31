@@ -8,26 +8,37 @@ The workflow has **two steps**:
 2. Plot EH blocks + adjacency scores using `draw.eh()`
 
 ---
-## Cloning the repository (experimental branch)
+## Installing from the experimental branch
 
-The adjacency score functionality is currently available on a non-default branch of syntenyPlotteR.
-
-To clone the repository and switch to the experimental branch:
-
-```
-git clone https://github.com/Farre-lab/syntenyPlotteR.git
-cd syntenyPlotteR
-git checkout adjs_score
-```
-
-
-Alternatively, you can clone directly into the branch:
+By default, install_github() installs the main branch of syntenyPlotteR.
+To install the adjacency-score functionality from the experimental branch, specify the branch name explicitly.
 
 ```
-git clone -b adjs_score https://github.com/Farre-lab/syntenyPlotteR.git
+install.packages("devtools")
+library(devtools)
+
+devtools::install_github("Farre-lab/syntenyPlotteR", ref = "adjs_score")
+
+library(syntenyPlotteR)
+``` 
+
+This installs the package directly from the adjs_score branch.
+
+Notes
+
+If you already have syntenyPlotteR installed, this will reinstall it from the specified branch
+
+You can switch back to the main version at any time by running:
+
+```
+devtools::install_github("Farre-lab/syntenyPlotteR")
 ```
 
-After cloning, you can install and test the package as usual.
+When to use which method?
+
+Method  Recommended for
+install_github(..., ref = "adjacency-scores") Most users / testers
+git clone + branch checkout Developers or people modifying code
 
 ---
 
