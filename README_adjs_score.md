@@ -17,14 +17,14 @@ To clone the repository and switch to the experimental branch:
 ```
 git clone https://github.com/Farre-lab/syntenyPlotteR.git
 cd syntenyPlotteR
-git checkout adjacency-scores
+git checkout adjs_score
 ```
 
 
 Alternatively, you can clone directly into the branch:
 
 ```
-git clone -b adjacency-scores https://github.com/Farre-lab/syntenyPlotteR.git
+git clone -b adjs_score https://github.com/Farre-lab/syntenyPlotteR.git
 ```
 
 After cloning, you can install and test the package as usual.
@@ -37,7 +37,7 @@ After cloning, you can install and test the package as usual.
 DESCHRAMBLER reports adjacency scores between **syntenic fragment (SF) pairs**.  
 To visualise these scores, they must be converted into **genomic positions along reconstructed ancestral chromosomes (APCFs)**.
 
-The function `deschramblER_to_adjS()` performs this conversion.
+The function `deschrambler_to_adjS()` performs this conversion.
 
 ---
 
