@@ -44,9 +44,10 @@ devtools::install_github("Farre-lab/syntenyPlotteR")
 
 When to use which method?
 
-Method  Recommended for
-install_github(..., ref = "adjacency-scores") Most users / testers
-git clone + branch checkout Developers or people modifying code
+| Method | Recommended for \
+| ----- | ----- |
+| `install_github(..., ref = "adjacency-scores")` | Most users / testers |
+| `git clone + branch checkout` | Developers or people modifying code |
 
 ---
 
@@ -134,7 +135,7 @@ This format is directly compatible with `draw.eh()`.
 ## 2. Plotting EH blocks + adjacency scores
 
 ### Purpose
-`draw.eh()` now supports plotting adjacency scores in a **separate, narrow panel** next to the EH plot, similar to AGV.
+`draw.eh()` now supports plotting adjacency scores in a **separate, narrow panel** next to the EH plot.
 
 Features:
 - Orange → red heatmap for adjacency score
@@ -235,8 +236,6 @@ draw.eh(
    ```r
    draw.eh(..., adj_file = "ancestor.adjS.txt")
    ```
-4. Compare visually with AGV output
-
 ---
 
 ## Status
