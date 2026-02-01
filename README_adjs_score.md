@@ -141,7 +141,7 @@ Features:
 - Orange → red heatmap for adjacency score
 - Grey line connecting scores
 - Fixed score scale: **0–1**
-- Reference lines at **0.2, 0.5, 0.8**
+- Reference lines at **0, 0.5, 1**
 
 ---
 
