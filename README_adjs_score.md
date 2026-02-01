@@ -11,7 +11,7 @@ The workflow has **two steps**:
 
 Below is an example of an EH plot with DESCHRAMBLER adjacency scores.
 <p align="center">
-  <img src="inst/exdata/mammal.55.png" width="700">
+  <img src="vignettes/images/mammal.55.png" width="700">
 </p>
 
 
