@@ -7,6 +7,14 @@ The workflow has **two steps**:
 1. Convert DESCHRAMBLER output into an adjacency score table (`adjS`)
 2. Plot EH blocks + adjacency scores using `draw.eh()`
 
+## Example output
+
+Below is an example of an EH plot with DESCHRAMBLER adjacency scores.
+<p align="center">
+  <img src="inst/exdata/eh_adjacency_example.png" width="700">
+</p>
+
+
 ---
 ## Installing from the experimental branch
 
@@ -166,14 +174,42 @@ This produces:
 
 ### Optional tuning
 
+#### Controlling labels and adjacency panel width
+
+The experimental adjacency-score version of `draw.eh()` exposes a small number of additional
+arguments to control plot layout.
+
+##### Adjacency panel width
+
+The width of the adjacency score panel is controlled as a **fraction of the total plot width**:
+
 ```r
 draw.eh(
   output = "EH",
   chrRange = "1",
   data_file = "my_eh_alignments.txt",
   adj_file = "Bovid_ancestor_v3.adjS.txt",
-  adj_panel_width = 0.1,
+  adj_panel_fract = 0.1, #this controls the width of the  Adj score panel
   directory = "plots"
+)
+```
+
+##### Labels inside EH blocks
+
+By default, chromosome labels inside EH blocks are:
+
+shortened to the last 3 characters
+
+plotted at a constant font size (not scaled by block length)
+
+These can be adjusted as follows:
+
+```
+draw.eh(
+  ...,
+  shorten_block_labels = TRUE,
+  shorten_n = 3,
+  label_fixed_size = 1.6
 )
 ```
 
