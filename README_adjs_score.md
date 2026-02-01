@@ -174,12 +174,12 @@ This produces:
 
 ### Optional tuning
 
-#### Controlling labels and adjacency panel width
+
 
 The experimental adjacency-score version of `draw.eh()` exposes a small number of additional
 arguments to control plot layout.
 
-##### Adjacency panel width
+#### Adjacency panel width
 
 The width of the adjacency score panel is controlled as a **fraction of the total plot width**:
 
@@ -194,7 +194,7 @@ draw.eh(
 )
 ```
 
-##### Labels inside EH blocks
+#### Labels inside EH blocks
 
 By default, chromosome labels inside EH blocks are:
 
