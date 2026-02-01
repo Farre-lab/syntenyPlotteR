@@ -173,14 +173,13 @@ This produces:
 
 ---
 
-### Optional tuning
-
+## Optional tuning
 
 
 The experimental adjacency-score version of `draw.eh()` exposes a small number of additional
 arguments to control plot layout.
 
-#### Adjacency panel width
+### Adjacency panel width
 
 The width of the adjacency score panel is controlled as a **fraction of the total plot width**:
 
@@ -195,7 +194,7 @@ draw.eh(
 )
 ```
 
-#### Labels inside EH blocks
+### Labels inside EH blocks
 
 By default, chromosome labels inside EH blocks are:
 
@@ -214,28 +213,6 @@ draw.eh(
 )
 ```
 
----
-
-## Notes & assumptions
-
-- Adjacency scores are assumed to be **between 0 and 1**
-- Scores outside this range are automatically clamped
-- Adjacency positions correspond to **boundaries between adjacent SFs** along APCFs
-- End adjacencies (SF–0) are ignored by default
-
----
-
-## Recommended testing workflow
-
-1. Run DESCHRAMBLER
-2. Convert adjacency scores:
-   ```r
-   adjS <- deschramblER_to_adjS(...)
-   ```
-3. Plot:
-   ```r
-   draw.eh(..., adj_file = "ancestor.adjS.txt")
-   ```
 ---
 
 ## Status
