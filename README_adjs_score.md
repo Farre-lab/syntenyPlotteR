@@ -185,7 +185,7 @@ draw.eh(
   chrRange = "1",
   data_file = "my_eh_alignments.txt",
   adj_file = "Bovid_ancestor_v3.adjS.txt",
-  adj_panel_fract = 0.1, #this controls the width of the  Adj score panel
+  adj_panel_frac = 0.1, #this controls the width of the  Adj score panel
   directory = "plots"
 )
 ```
