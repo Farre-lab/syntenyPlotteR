@@ -9,9 +9,7 @@
 #' @param chr_prefix Prefix added to APCF IDs
 #' @return data.frame with columns: ancestor, chr, pos, score
 #' @export
-
-
-deschrambler_to_adjS <- function(apcf_file,
+deschramblER_to_adjS <- function(apcf_file,
                                  adjs_file,
                                  block_list_file,
                                  out_file = NULL,
