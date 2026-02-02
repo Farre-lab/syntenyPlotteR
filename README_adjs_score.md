@@ -35,12 +35,8 @@ This installs the package directly from the adjs_score branch.
 Notes
 
 If you already have syntenyPlotteR installed, this will reinstall it from the specified branch
+This branch can also plot all the other plots, so no need to go back to the master branch
 
-You can switch back to the main version at any time by running:
-
-```
-devtools::install_github("Farre-lab/syntenyPlotteR")
-```
 
 When to use which method?
 
@@ -57,7 +53,7 @@ When to use which method?
 DESCHRAMBLER reports adjacency scores between **syntenic fragment (SF) pairs**.  
 To visualise these scores, they must be converted into **genomic positions along reconstructed ancestral chromosomes (APCFs)**.
 
-The function `deschrambler_to_adjS()` performs this conversion.
+The function `deschramblER_to_adjS()` performs this conversion.
 
 ---
 
@@ -74,7 +70,7 @@ The function `deschrambler_to_adjS()` performs this conversion.
 ### Function
 
 ```r
-deschrambler_to_adjS(
+deschramblER_to_adjS(
   apcf_file,
   adjs_file,
   block_list_file,
@@ -104,7 +100,7 @@ deschrambler_to_adjS(
 ### Example
 
 ```r
-adjS <- deschrambler_to_adjS(
+adjS <- deschramblER_to_adjS(
   apcf_file       = "Ancestor.APCF",
   adjs_file       = "Ancestor.ADJS",
   block_list_file = "SFs/block_list.txt",
