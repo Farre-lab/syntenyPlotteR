@@ -25,7 +25,7 @@ To install the adjacency-score functionality from the experimental branch, speci
 install.packages("devtools")
 library(devtools)
 
-devtools::install_github("Farre-lab/syntenyPlotteR", ref = "adjs_score")
+devtools::install_github("Farre-lab/syntenyPlotteR", ref = "adj_scores")
 
 library(syntenyPlotteR)
 ``` 
