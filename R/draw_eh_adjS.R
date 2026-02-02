@@ -1,3 +1,59 @@
+#' Plot extended homology (EH) blocks with optional adjacency scores
+#'
+#' This function plots EH blocks for one or more chromosomes and, optionally,
+#' a side panel showing DESCHRAMBLER adjacency scores aligned to genomic
+#' coordinates. It extends the original \code{draw.eh} by allowing control over
+#' label shortening, label size, and adjacency panel width.
+#'
+#' @param output Character string. Prefix for output file names.
+#' @param chrRange Character vector. Chromosome(s) to plot.
+#' @param data_file Character string. Path to EH alignment file.
+#' @param directory Character string. Output directory. Defaults to a temporary directory.
+#' @param fileformat Character string. Output image format (e.g. "png", "pdf").
+#' @param colour Character string. Fill colour for forward-oriented blocks.
+#' @param inverted.colour Character string. Fill colour for inverted blocks.
+#' @param w Numeric. Width of the output image.
+#' @param h Numeric. Height of the output image.
+#' @param ps Numeric. Point size used when saving the plot.
+#'
+#' @param adj_file Character string or NULL. Optional file with adjacency scores
+#'   (e.g. converted from DESCHRAMBLER). If NULL, no adjacency panel is drawn.
+#' @param adj_point_size Numeric. Size of points in the adjacency score panel.
+#' @param adj_line Logical. Whether to draw a connecting line between adjacency score points.
+#' @param adj_colour_low Character string. Low colour for adjacency score gradient.
+#' @param adj_colour_high Character string. High colour for adjacency score gradient.
+#' @param adj_panel_frac Numeric. Fraction of total plot width allocated to the
+#'   adjacency score panel (between 0 and 1).
+#' @param adj_score_transform Character. Optional transformation applied to
+#'   adjacency scores ("identity", "sqrt", or "log10").
+#'
+#' @param strip_angle Numeric. Angle of species (facet) labels.
+#' @param strip_text_size Numeric. Text size of species (facet) labels.
+#'
+#' @param shorten_block_labels Logical. Whether to shorten chromosome labels
+#'   inside EH blocks.
+#' @param shorten_n Integer. Number of characters kept from the right when
+#'   shortening block labels.
+#' @param label_fixed_size Numeric. Base font size for labels inside EH blocks.
+#' @param label_scale_by_width Logical. Whether to scale block label size by the
+#'   number of species panels.
+#' @param label_width_exponent Numeric. Exponent controlling how strongly label
+#'   size decreases with increasing number of species panels.
+#' @param label_min Numeric. Minimum allowed block label font size.
+#' @param label_max Numeric. Maximum allowed block label font size.
+#'
+#' @return Invisibly returns NULL. The function is called for its side effect
+#'   of saving one image per chromosome.
+#'
+#' @details
+#' Adjacency scores are expected to be numeric values between 0 and 1 and are
+#' plotted as a heatmap (orange to red) along genomic coordinates. One-to-many
+#' mappings are retained in the adjacency panel.
+#'
+#' @seealso \code{\link{draw.linear}}
+#'
+#' @export
+
 draw.eh <- function(output,
                     chrRange,
                     data_file,

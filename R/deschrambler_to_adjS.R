@@ -1,4 +1,17 @@
-deschramblER_to_adjS <- function(apcf_file,
+#' Convert DESCHRAMBLER adjacency scores to adjS format
+#'
+#' @param apcf_file Path to Ancestor.APCF
+#' @param adjs_file Path to Ancestor.ADJS
+#' @param block_list_file Path to SFs/block_list.txt
+#' @param out_file Optional output file
+#' @param ancestor_name Optional ancestor name override
+#' @param include_ends Include 0-end adjacencies
+#' @param chr_prefix Prefix added to APCF IDs
+#' @return data.frame with columns: ancestor, chr, pos, score
+#' @export
+
+
+deschrambler_to_adjS <- function(apcf_file,
                                  adjs_file,
                                  block_list_file,
                                  out_file = NULL,

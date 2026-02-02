@@ -11,6 +11,7 @@ Draw syntenic relationships between genome assemblies. There are 3 functions whi
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://farre-lab.github.io/syntenyPlotteR/}
   \item Report bugs at \url{https://github.com/Farre-lab/syntenyPlotteR/issues}
 }
 
